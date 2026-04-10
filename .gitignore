@@ -1,0 +1,7 @@
+# Runtime directories — ephemeral, not part of the source
+logs/
+work/
+state/
+
+# Claude Code local settings
+.claude/
