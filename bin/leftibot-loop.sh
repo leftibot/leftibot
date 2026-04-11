@@ -35,8 +35,15 @@ while true; do
   echo "============================================================"
   echo "[loop] tick #$count at $(date '+%F %T')"
   echo "============================================================"
-  flock -n "$LOCK" "$TICK" "$@" || echo "[loop] tick #$count failed or skipped (lock held); rc=$?"
-  echo
-  echo "[loop] sleeping $INTERVAL — Ctrl-C to stop"
-  sleep "$INTERVAL"
+  flock -n "$LOCK" "$TICK" "$@"
+  tick_rc=$?
+  if [[ $tick_rc -eq 10 ]]; then
+    echo "[loop] work done — looping immediately"
+  elif [[ $tick_rc -eq 0 ]]; then
+    echo "[loop] no work — sleeping $INTERVAL (Ctrl-C to stop)"
+    sleep "$INTERVAL"
+  else
+    echo "[loop] tick #$count exited rc=$tick_rc — sleeping $INTERVAL (Ctrl-C to stop)"
+    sleep "$INTERVAL"
+  fi
 done

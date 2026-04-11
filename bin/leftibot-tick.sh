@@ -296,13 +296,33 @@ find_next_task() {
       fi
 
       if [[ "$pr_author" == "$BOT_USER" ]]; then
-        # Leftibot's own PR → address review feedback
-        if [[ -z "$pr_review_cand" ]]; then
-          vlog "→ classified as pr-review (own PR)"
-          pr_review_cand=$(emit_pr_review_candidate "$thread_id" "$pr")
+        # Leftibot's own PR — but is lefticus asking a question or giving feedback?
+        local pr_trigger_text=""
+        local pr_issue_comments pr_review_comments pr_reviews
+        pr_issue_comments=$(gh api "repos/$pr_owner/$pr_repo/issues/$pr_number/comments" --paginate 2>/dev/null || echo '[]')
+        pr_review_comments=$(gh api "repos/$pr_owner/$pr_repo/pulls/$pr_number/comments" --paginate 2>/dev/null || echo '[]')
+        pr_reviews=$(gh api "repos/$pr_owner/$pr_repo/pulls/$pr_number/reviews" --paginate 2>/dev/null || echo '[]')
+        pr_trigger_text=$(get_lefticus_trigger_text "$pr_issue_comments")
+        [[ -z "$pr_trigger_text" || "$pr_trigger_text" == "null" ]] && \
+          pr_trigger_text=$(get_lefticus_trigger_text "$pr_review_comments")
+        [[ -z "$pr_trigger_text" || "$pr_trigger_text" == "null" ]] && \
+          pr_trigger_text=$(get_lefticus_trigger_text "$pr_reviews")
+
+        if is_question "$pr_trigger_text"; then
+          # Question on own PR → comment-only (don't push code changes)
+          if [[ -z "$comment_cand" ]]; then
+            vlog "→ classified as comment-only (question on own PR)"
+            comment_cand=$(emit_comment_candidate "$thread_id" "pr" "$pr_owner" "$pr_repo" "$pr_number" "$pr_title" "$pr_html_url")
+          fi
+        else
+          # Command/feedback on own PR → address review
+          if [[ -z "$pr_review_cand" ]]; then
+            vlog "→ classified as pr-review (own PR)"
+            pr_review_cand=$(emit_pr_review_candidate "$thread_id" "$pr")
+          fi
         fi
       else
-        # Someone else's PR → comment-only
+        # Someone else's PR → always comment-only
         if [[ -z "$comment_cand" ]]; then
           vlog "→ classified as comment-only (other's PR)"
           comment_cand=$(emit_comment_candidate "$thread_id" "pr" "$pr_owner" "$pr_repo" "$pr_number" "$pr_title" "$pr_html_url")
@@ -365,7 +385,7 @@ find_next_task() {
         fi
       fi
     fi
-  done < <(echo "$notifications" | jq -c '.[] | select(.reason=="mention" or .reason=="comment" or .reason=="review_requested")')
+  done < <(echo "$notifications" | jq -c '.[] | select(.reason=="mention" or .reason=="comment" or .reason=="review_requested" or .reason=="author")')
 
   # Emit highest priority candidate
   if [[ -n "$pr_review_cand" ]]; then
@@ -553,8 +573,8 @@ setup_workspace() {
     git remote add upstream "https://github.com/$owner/$repo.git" 2>/dev/null || true
     git fetch --quiet upstream "$_default_branch"
     # Sync fork's default branch to upstream
-    git checkout "$_default_branch"
-    git reset --hard "upstream/$_default_branch"
+    git checkout "$_default_branch" >/dev/null 2>&1
+    git reset --hard "upstream/$_default_branch" >/dev/null 2>&1
     if (( ! DRY_RUN )); then
       git push --quiet --force origin "$_default_branch"
     fi
@@ -846,12 +866,13 @@ process_pr_review() {
   pr_body_text=$(echo "$pr_full" | jq -r '.body // "(no body)"')
 
   # Build a unified conversation thread
-  local all_comments_text
+  local all_comments_text=""
   all_comments_text=$(
-    echo "$issue_comments" | jq -r '.[] | "### [comment] @" + .user.login + " (" + .created_at + ")\n" + (.body // "")' 2>/dev/null
-    echo "$review_comments" | jq -r '.[] | "### [inline on " + .path + ":" + (.line // .original_line | tostring) + "] @" + .user.login + " (" + .created_at + ")\n" + (.body // "")' 2>/dev/null
-    echo "$reviews" | jq -r '.[] | select(.body != null and .body != "") | "### [review " + .state + "] @" + .user.login + " (" + .submitted_at + ")\n" + .body' 2>/dev/null
-  ) | head -c 32768
+    echo "$issue_comments" | jq -r '.[] | "### [comment] @" + .user.login + " (" + .created_at + ")\n" + (.body // "")' 2>/dev/null || true
+    echo "$review_comments" | jq -r '.[] | "### [inline on " + (.path // "?") + "] @" + .user.login + " (" + .created_at + ")\n" + (.body // "")' 2>/dev/null || true
+    echo "$reviews" | jq -r '.[] | select(.body != null and .body != "") | "### [review " + .state + "] @" + .user.login + " (" + .submitted_at + ")\n" + .body' 2>/dev/null || true
+  ) || true
+  all_comments_text=$(echo "$all_comments_text" | head -c 32768)
   [[ -z "$all_comments_text" ]] && all_comments_text="(no review comments)"
 
   # Directive from lefticus
@@ -886,14 +907,15 @@ process_pr_review() {
   ) && has_new_commits=1
 
   if (( has_new_commits )); then
+    # Capture summary BEFORE push — push updates origin/$head_branch to match HEAD
+    local commit_summary=""
+    commit_summary=$(cd "$workdir" && git log --oneline "origin/$head_branch..HEAD" | head -5) || true
     if (( DRY_RUN )); then
-      log "[dry-run] would push new commits to $head_branch"
+      log "[dry-run] would push new commits to $head_branch:"
+      log "  $commit_summary"
     else
       ( cd "$workdir" && git push --quiet origin "$head_branch" ) || die "push failed"
       log "pushed review fixes to $pr_url"
-      # Post a comment on the PR saying what was addressed
-      local commit_summary
-      commit_summary=$(cd "$workdir" && git log --oneline "origin/$head_branch..HEAD" | head -5)
       gh pr comment "$pr_number" --repo "$owner/$repo" --body \
         "Addressed review feedback from @lefticus. New commits:
 \`\`\`
@@ -959,10 +981,11 @@ process_comment_request() {
     reviews=$(gh api "repos/$owner/$repo/pulls/$number/reviews" --paginate 2>/dev/null || echo '[]')
     comments_json="$issue_comments"
     comments_text=$(
-      echo "$issue_comments" | jq -r '.[] | "### [comment] @" + .user.login + " (" + .created_at + ")\n" + (.body // "")' 2>/dev/null
-      echo "$review_comments" | jq -r '.[] | "### [inline on " + .path + "] @" + .user.login + " (" + .created_at + ")\n" + (.body // "")' 2>/dev/null
-      echo "$reviews" | jq -r '.[] | select(.body != null and .body != "") | "### [review " + .state + "] @" + .user.login + " (" + .submitted_at + ")\n" + .body' 2>/dev/null
-    ) | head -c 32768
+      echo "$issue_comments" | jq -r '.[] | "### [comment] @" + .user.login + " (" + .created_at + ")\n" + (.body // "")' 2>/dev/null || true
+      echo "$review_comments" | jq -r '.[] | "### [inline on " + (.path // "?") + "] @" + .user.login + " (" + .created_at + ")\n" + (.body // "")' 2>/dev/null || true
+      echo "$reviews" | jq -r '.[] | select(.body != null and .body != "") | "### [review " + .state + "] @" + .user.login + " (" + .submitted_at + ")\n" + .body' 2>/dev/null || true
+    ) || true
+    comments_text=$(echo "$comments_text" | head -c 32768)
   fi
   [[ -z "$comments_text" ]] && comments_text="(no comments)"
 
@@ -1062,7 +1085,7 @@ main() {
 
   if [[ -z "$cand" || "$cand" == "null" ]]; then
     log "no work to do"
-    exit 0
+    exit 0  # 0 = no work found
   fi
 
   local task_type
@@ -1073,6 +1096,8 @@ main() {
     comment-only)  process_comment_request "$cand" ;;
     *)             die "unknown task type: $task_type" ;;
   esac
+
+  exit 10  # 10 = work was done
 }
 
 main "$@"
