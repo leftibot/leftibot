@@ -59,7 +59,6 @@ after a 24-hour cooldown.
 | `prompts/fix-issue.md`       | Prompt template for fixing a new issue.                 |
 | `prompts/address-review.md`  | Prompt template for addressing PR review feedback.      |
 | `prompts/comment-reply.md`   | Prompt template for answering a question in a comment.  |
-| `tests/test-readme.sh`       | Checks that this README matches the scripts.            |
 | `logs/`, `work/`, `state/`   | Created at runtime; ignored by git.                     |
 
 Templates use `{{KEY}}` placeholders, which are filled in by `render_template`
@@ -135,9 +134,3 @@ Or install a cron entry:
 
 The loop and the cron entry share `state/tick.lock`, so both can be installed
 at once without running two ticks together.
-
-## Testing
-
-```sh
-tests/test-readme.sh
-```
