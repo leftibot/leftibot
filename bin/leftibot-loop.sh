@@ -13,6 +13,8 @@
 #   - tick found no work     → wait 1m, then 2m, 4m, 8m, ... capped at 15m
 #   - tick failed (other rc) → same backoff as idle, so a persistent failure
 #                              doesn't hammer GitHub
+#   - Claude out of usage    → (rc=20) sleep until the reset time recorded in
+#                              state/usage-limit-until, then resume
 # An idle tick costs roughly one notifications API call, so even the 1m floor
 # stays far below GitHub's 5000 requests/hour limit; the cap keeps a quiet bot
 # down to a handful of calls per hour.
@@ -43,6 +45,16 @@ next_idle_delay() {
   if (( prev <= 0 )); then next="$min"; else next=$((prev * 2)); fi
   (( next > max )) && next="$max"
   echo "$next"
+}
+
+# Seconds to sleep for a usage-limit pause: until $1 (epoch), at least the idle
+# minimum; unknown reset time → idle cap.   $2 = now (epoch)
+usage_limit_wait() {
+  local until="$1" now="$2"
+  if ! [[ "$until" =~ ^[0-9]+$ ]]; then echo "$MAX_IDLE_SECONDS"; return; fi
+  local wait=$((until - now))
+  (( wait < MIN_IDLE_SECONDS )) && wait="$MIN_IDLE_SECONDS"
+  echo "$wait"
 }
 
 format_duration() {
@@ -77,6 +89,15 @@ main() {
     if [[ $tick_rc -eq 10 ]]; then
       delay=0
       echo "[loop] work done — looping immediately"
+      continue
+    fi
+    if [[ $tick_rc -eq 20 ]]; then
+      local until wait
+      until=$(cat "$leftibot_home/state/usage-limit-until" 2>/dev/null || true)
+      wait=$(usage_limit_wait "$until" "$(date +%s)")
+      delay=0
+      echo "[loop] claude usage limit — sleeping $(format_duration "$wait") until reset (Ctrl-C to stop)"
+      sleep "$wait"
       continue
     fi
     delay=$(next_idle_delay "$delay" "$MIN_IDLE_SECONDS" "$MAX_IDLE_SECONDS")

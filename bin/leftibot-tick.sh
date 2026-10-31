@@ -36,6 +36,8 @@ ISSUE_PROMPT_FILE="$LEFTIBOT_HOME/prompts/fix-issue.md"
 REVIEW_PROMPT_FILE="$LEFTIBOT_HOME/prompts/address-review.md"
 COMMENT_PROMPT_FILE="$LEFTIBOT_HOME/prompts/comment-reply.md"
 SEEN_FILE="$STATE_DIR/seen-issues.json"
+USAGE_LIMIT_FILE="$STATE_DIR/usage-limit-until"   # epoch; ticks pause until then
+USAGE_LIMIT_EXIT=20                                # tick rc: paused for Claude usage limit
 
 TRIGGER_USER="lefticus"
 BOT_USER="leftibot"
@@ -134,6 +136,102 @@ is_dedup_skip() {
       ;;
     *) return 1 ;;
   esac
+}
+
+# ============================================================================
+# Claude usage limit: pause instead of reporting failure
+# ============================================================================
+# When Claude is out of usage it prints one line such as
+#   You've hit your 5-hour limit · resets 3:10pm (America/Denver)
+# and exits. That is not a failure of the task: pause until the reset, leave the
+# GitHub notification unread so the task is retried, and post nothing.
+
+# Prints the usage-limit line from $1 and returns 0, or returns 1 if there is none.
+detect_usage_limit() {
+  grep -m1 -Ei "hit your .*limit|usage limit reached" <<<"$1"
+}
+
+# Prints the epoch at which the limit in message $1 resets (+60s buffer).
+# $2 = current epoch (default: now). Unparseable → now + 30m.
+usage_limit_reset_epoch() {
+  local msg="$1" now="${2:-$(date +%s)}"
+  local fallback=$((now + 1800)) reset=""
+  if [[ "$msg" =~ \|([0-9]{9,})[[:space:]]*$ ]]; then
+    reset="${BASH_REMATCH[1]}"
+  else
+    local tz="" when=""
+    [[ "$msg" =~ \(([A-Za-z_]+(/[A-Za-z_+-]+)*)\) ]] && tz="${BASH_REMATCH[1]}"
+    when=$(sed -nE 's/.*resets (at )?([^(]*[0-9](am|pm)?).*/\2/Ip' <<<"$msg" | tr -d ',')
+    [[ -n "$when" ]] || { echo "$fallback"; return 0; }
+    if [[ "$when" =~ ^[0-9]{1,2}(:[0-9]{2})?[[:space:]]*([aApP][mM])?$ ]]; then
+      local day
+      day=$(TZ="${tz:-}" date -d "@$now" +%F)
+      reset=$(TZ="${tz:-}" date -d "$day $when" +%s 2>/dev/null) || reset=""
+      if [[ -n "$reset" ]] && (( reset <= now )); then
+        if (( now - reset < 12 * 3600 )); then
+          # Just passed: Claude rounds to the minute and clocks drift, so the
+          # reset is imminent — retry shortly instead of waiting a whole day.
+          echo $((now + 300)); return 0
+        fi
+        # Wrapped past midnight. Roll the calendar day, not +86400s, so a DST
+        # change can't shift the hour.
+        day=$(TZ="${tz:-}" date -d "$day + 1 day" +%F)
+        reset=$(TZ="${tz:-}" date -d "$day $when" +%s 2>/dev/null) || reset=""
+      fi
+    else
+      reset=$(TZ="${tz:-}" date -d "$when" +%s 2>/dev/null) || reset=""
+    fi
+  fi
+  if [[ -z "$reset" ]] || (( reset <= now || reset > now + 8 * 86400 )); then
+    echo "$fallback"
+  else
+    echo $((reset + 60))
+  fi
+}
+
+SEEN_RESTORE_URL=""
+SEEN_RESTORE_JSON="null"
+
+# Remember $1's dedup entry so a usage-limit pause can put it back.
+remember_seen_for_restore() {
+  SEEN_RESTORE_URL="$1"
+  SEEN_RESTORE_JSON=$(jq -c --arg u "$1" '.[$u] // null' "$SEEN_FILE")
+}
+
+restore_seen() {
+  [[ -n "$SEEN_RESTORE_URL" ]] || return 0
+  (( DRY_RUN )) && return 0
+  local tmp
+  tmp=$(mktemp)
+  jq --arg u "$SEEN_RESTORE_URL" --argjson prev "$SEEN_RESTORE_JSON" \
+    'if $prev == null then del(.[$u]) else .[$u] = $prev end' "$SEEN_FILE" > "$tmp"
+  mv "$tmp" "$SEEN_FILE"
+}
+
+# Undo this tick's visible effects and exit $USAGE_LIMIT_EXIT.
+#   $1 = usage-limit message, $2 = workdir to clean up (may be empty)
+abort_for_usage_limit() {
+  local msg="$1" workdir="${2:-}" reset
+  reset=$(usage_limit_reset_epoch "$msg")
+  echo "$reset" > "$USAGE_LIMIT_FILE"
+  log "claude is out of usage ($msg) — pausing until $(date -d "@$reset" '+%F %T')"
+  delete_status_comment
+  restore_seen
+  [[ -n "$workdir" ]] && cleanup_workdir "$workdir"
+  exit "$USAGE_LIMIT_EXIT"
+}
+
+# Exit $USAGE_LIMIT_EXIT (before any GitHub call) while a usage-limit pause is active.
+check_usage_limit_pause() {
+  [[ -f "$USAGE_LIMIT_FILE" ]] || return 0
+  local until now
+  until=$(cat "$USAGE_LIMIT_FILE")
+  now=$(date +%s)
+  if [[ "$until" =~ ^[0-9]+$ ]] && (( now < until )); then
+    log "claude usage limit — paused until $(date -d "@$until" '+%F %T'), skipping tick"
+    exit "$USAGE_LIMIT_EXIT"
+  fi
+  rm -f "$USAGE_LIMIT_FILE"
 }
 
 # ============================================================================
@@ -652,6 +750,10 @@ invoke_claude() {
   local claude_rc=$?
   set -e
   log "claude exited rc=$claude_rc"
+  local limit_msg
+  if limit_msg=$(detect_usage_limit "$(tail -n 5 "$claude_log")"); then
+    abort_for_usage_limit "$limit_msg" "$workdir"
+  fi
   if (( VERBOSE )); then
     log "--- last 20 lines of claude output ---"
     tail -n 20 "$claude_log" | sed 's/^/  /'
@@ -799,6 +901,15 @@ finish_status_comment() {
     -f "body=$body" >/dev/null 2>&1 || log "WARNING: failed to update status comment $comment_id"
 }
 
+# Remove the "started" comment entirely (used when pausing for a usage limit).
+delete_status_comment() {
+  [[ -n "$STATUS_COMMENT_ID" ]] || return 0
+  local comment_id="$STATUS_COMMENT_ID"
+  STATUS_COMMENT_ID=""
+  gh api -X DELETE "repos/$STATUS_COMMENT_OWNER/$STATUS_COMMENT_REPO/issues/comments/$comment_id" \
+    >/dev/null 2>&1 || log "WARNING: failed to delete status comment $comment_id"
+}
+
 on_exit_finalize_status_comment() {
   finish_status_comment "⚠️ $BOT_USER stopped unexpectedly while working on this. Leaving for human review."
 }
@@ -830,6 +941,7 @@ process_new_issue() {
   log "FLOW: new-issue — $owner/$repo#$number — $title"
   log "  url: $issue_url"
 
+  remember_seen_for_restore "$issue_url"
   mark_seen "$issue_url" "in-progress"
   begin_status_comment "$owner" "$repo" "$number" \
     "👀 $BOT_USER has started working on this. I'll update this comment when I'm done."
@@ -1138,6 +1250,10 @@ process_comment_request() {
   local claude_rc=$?
   set -e
   log "claude exited rc=$claude_rc"
+  local limit_msg
+  if limit_msg=$(detect_usage_limit "$(tail -n 5 <<<"$claude_output"; tail -n 5 "$claude_log")"); then
+    abort_for_usage_limit "$limit_msg" "$workdir"
+  fi
 
   # Extract comment between markers
   local comment_text
@@ -1178,6 +1294,7 @@ process_comment_request() {
 # Main
 # ============================================================================
 main() {
+  check_usage_limit_pause
   preflight
   log "leftibot tick starting (dry_run=$DRY_RUN verbose=$VERBOSE skip_trigger_check=$SKIP_TRIGGER_CHECK)"
 
