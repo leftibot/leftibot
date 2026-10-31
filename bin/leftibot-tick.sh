@@ -267,7 +267,16 @@ find_next_task() {
     thread_id=$(echo "$notif" | jq -r .id)
     subject_url=$(echo "$notif" | jq -r .subject.url)
     subject_type=$(echo "$notif" | jq -r .subject.type)
-    vlog "examining thread $thread_id → $subject_url ($subject_type)"
+    local notif_reason
+    notif_reason=$(echo "$notif" | jq -r .reason)
+    vlog "examining thread $thread_id → $subject_url ($subject_type, reason=$notif_reason)"
+
+    # CI activity (workflow failures on our own branches): not actionable here, mark read
+    if [[ "$notif_reason" == "ci_activity" ]]; then
+      vlog "ci_activity notification, marking read"
+      mark_notification_read "$thread_id"
+      continue
+    fi
 
     if [[ "$subject_type" == "PullRequest" ]]; then
       local pr
@@ -346,13 +355,8 @@ find_next_task() {
         continue
       fi
 
-      if is_dedup_skip "$issue_url"; then
-        vlog "issue already handled (status=$(seen_status "$issue_url")), marking read"
-        mark_notification_read "$thread_id"
-        continue
-      fi
-
-      # Classify: question (?) → comment-only, else → new-issue fix
+      # Fetch comments and classify BEFORE dedup, so questions on
+      # already-handled issues still get a comment-only reply.
       local issue_comments trigger_text
       issue_comments=$(gh api "$subject_url/comments" --paginate 2>/dev/null || echo '[]')
       trigger_text=$(get_lefticus_trigger_text "$issue_comments")
@@ -373,19 +377,32 @@ find_next_task() {
       issue_number=$(echo "$issue" | jq -r .number)
       issue_title=$(echo "$issue" | jq -r .title)
 
-      if is_question "$trigger_text"; then
+      # Classification rule:
+      #   - If the issue has already been worked (done/draft-pr-opened) or the
+      #     trigger text contains a "?", treat as comment-only. "?" detection
+      #     alone is too fragile (e.g. "was this fixed" without punctuation).
+      #   - Otherwise, it's a fresh fix request: apply dedup and queue as new-issue.
+      local existing_status
+      existing_status=$(seen_status "$issue_url")
+      if [[ "$existing_status" == "done" || "$existing_status" == "draft-pr-opened" ]] \
+         || is_question "$trigger_text"; then
         if [[ -z "$comment_cand" ]]; then
-          vlog "→ classified as comment-only (question in trigger text)"
+          vlog "→ classified as comment-only (status=$existing_status, question=$(is_question "$trigger_text" && echo yes || echo no))"
           comment_cand=$(emit_comment_candidate "$thread_id" "issue" "$issue_owner" "$issue_repo" "$issue_number" "$issue_title" "$issue_url")
         fi
       else
+        if is_dedup_skip "$issue_url"; then
+          vlog "issue already handled (status=$existing_status), marking read"
+          mark_notification_read "$thread_id"
+          continue
+        fi
         if [[ -z "$issue_cand" ]]; then
           vlog "→ classified as new-issue"
           issue_cand=$(emit_issue_candidate "$thread_id" "$issue")
         fi
       fi
     fi
-  done < <(echo "$notifications" | jq -c '.[] | select(.reason=="mention" or .reason=="comment" or .reason=="review_requested" or .reason=="author")')
+  done < <(echo "$notifications" | jq -c '[.[] | select(.reason=="mention" or .reason=="comment" or .reason=="review_requested" or .reason=="author" or .reason=="ci_activity")] | sort_by(.updated_at) | .[]')
 
   # Emit highest priority candidate
   if [[ -n "$pr_review_cand" ]]; then
@@ -404,7 +421,36 @@ fetch_issue_by_url() {
   path=$(sed -E 's|https?://github\.com/([^/]+)/([^/]+)/issues/([0-9]+)|repos/\1/\2/issues/\3|' <<<"$html_url")
   local issue
   issue=$(gh api "$path" 2>/dev/null) || die "could not fetch $html_url"
-  emit_issue_candidate "manual" "$issue"
+
+  # Apply same classification as the notification path: if the issue is
+  # already done/draft-pr-opened or the latest lefticus mention looks like a
+  # question, route to comment-only. Otherwise queue as a new-issue fix.
+  local issue_url status issue_comments trigger_text
+  issue_url=$(echo "$issue" | jq -r .html_url)
+  status=$(seen_status "$issue_url")
+  issue_comments=$(gh api "$path/comments" --paginate 2>/dev/null || echo '[]')
+  trigger_text=$(get_lefticus_trigger_text "$issue_comments")
+  if [[ -z "$trigger_text" || "$trigger_text" == "null" ]]; then
+    local body_author
+    body_author=$(echo "$issue" | jq -r .user.login)
+    if [[ "$body_author" == "$TRIGGER_USER" ]]; then
+      trigger_text=$(echo "$issue" | jq -r '.body // ""')
+    fi
+  fi
+
+  if [[ "$status" == "done" || "$status" == "draft-pr-opened" ]] \
+     || is_question "$trigger_text"; then
+    local owner repo number title
+    local repo_full
+    repo_full=$(echo "$issue" | jq -r '.repository_url | sub("https://api.github.com/repos/"; "")')
+    owner=$(echo "$repo_full" | cut -d/ -f1)
+    repo=$(echo "$repo_full" | cut -d/ -f2)
+    number=$(echo "$issue" | jq -r .number)
+    title=$(echo "$issue" | jq -r .title)
+    emit_comment_candidate "manual" "issue" "$owner" "$repo" "$number" "$title" "$issue_url"
+  else
+    emit_issue_candidate "manual" "$issue"
+  fi
 }
 
 fetch_pr_by_url() {

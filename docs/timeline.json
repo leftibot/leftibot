@@ -1,0 +1,1676 @@
+{
+  "generated_at": "2026-04-11T22:35:18.176002+00:00",
+  "bot_user": "leftibot",
+  "entries": [
+    {
+      "id": "ChaiScript/chaiscript.github.io#pr7",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "chaiscript.github.io",
+      "issue": {
+        "number": 6,
+        "title": "Add wasm playground",
+        "url": "https://github.com/ChaiScript/chaiscript.github.io/issues/6",
+        "state": "open"
+      },
+      "pr": {
+        "number": 7,
+        "title": "Fix #6: Add wasm playground",
+        "url": "https://github.com/ChaiScript/chaiscript.github.io/pull/7",
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "created_at": "2026-04-11T22:01:03Z",
+        "merged_at": null
+      },
+      "conversation": []
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr664",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 459,
+        "title": "char, to_char, int, to_int, string, to_string",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/459",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 664,
+        "title": "Fix #459: char, to_char, int, to_int, string, to_string",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/664",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T21:41:00Z",
+        "merged_at": "2026-04-11T22:08:10Z"
+      },
+      "conversation": []
+    },
+    {
+      "id": "cpp-best-practices/cmake_template#pr145",
+      "type": "issue-fix",
+      "owner": "cpp-best-practices",
+      "repo": "cmake_template",
+      "issue": {
+        "number": 143,
+        "title": "SystemLink Cmake module is unnecessary complexity",
+        "url": "https://github.com/cpp-best-practices/cmake_template/issues/143",
+        "state": "open"
+      },
+      "pr": {
+        "number": 145,
+        "title": "Fix #143: SystemLink Cmake module is unnecessary complexity",
+        "url": "https://github.com/cpp-best-practices/cmake_template/pull/145",
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "created_at": "2026-04-11T21:19:54Z",
+        "merged_at": null
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T21:52:20Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot remove CMake test scripts, that will be confusing to end user, and don't include lefticus tools as a system include",
+          "url": "https://github.com/cpp-best-practices/cmake_template/pull/145#issuecomment-4230242634",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T21:55:17Z",
+          "author": "codecov[bot]",
+          "author_avatar": "https://avatars.githubusercontent.com/in/254?v=4",
+          "type": "issue_comment",
+          "body": "## [Codecov](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/145?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 20.50%. Comparing base ([`12e3e37`](https://app.codecov.io/gh/cpp-best-practices/cmake_template/commit/12e3e376cd9264781635ec81e5c76a45ff901d5e?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices)) to head ([`c5426d7`](https://app.codecov.io/gh/cpp-best-practices/cmake_template/commit/c5426d707c66ceda86ed7f5e030d40d73495fc32?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices)).\n\n<details><summary>Additional details and impacted files</summary>\n\n\n\n```diff\n@@           Coverage Diff           @@\n##             main     #145   +/-   ##\n=======================================\n  Coverage   20.50%   20.50%           \n=======================================\n  Files           5        5           \n  Lines         239      239           \n  Branches      108      110    +2     \n=======================================\n  Hits           49       49           \n+ Misses        186      181    -5     \n- Partials        4        9    +5     \n```\n\n| [Flag](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/145/flags?src=pr&el=flags&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices) | Coverage \u0394 | |\n|---|---|---|\n| [Linux](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/145/flags?src=pr&el=flag&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices) | `18.36% <\u00f8> (\u00f8)` | |\n| [Windows](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/145/flags?src=pr&el=flag&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices) | `21.02% <\u00f8> (\u00f8)` | |\n| [macOS](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/145/flags?src=pr&el=flag&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices) | `18.87% <\u00f8> (\u00f8)` | |\n\nFlags with carried forward coverage won't be shown. [Click here](https://docs.codecov.io/docs/carryforward-flags?utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices#carryforward-flags-in-the-pull-request-comment) to find out more.\n</details>\n\n[:umbrella: View full report in Codecov by Sentry](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/145?dropdown=coverage&src=pr&el=continue&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices).   \n:loudspeaker: Have feedback on the report? [Share it here](https://about.codecov.io/codecov-pr-comment-feedback/?utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices).\n<details><summary> :rocket: New features to boost your workflow: </summary>\n\n- :snowflake: [Test Analytics](https://docs.codecov.com/docs/test-analytics): Detect flaky tests, report on failures, and find test suite problems.\n</details>",
+          "url": "https://github.com/cpp-best-practices/cmake_template/pull/145#issuecomment-4230246371",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T21:58:13Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\nc5426d7 Address review: remove CMake test scripts, don't SYSTEM-include lefticus tools\n```",
+          "url": "https://github.com/cpp-best-practices/cmake_template/pull/145#issuecomment-4230250006",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T22:24:53Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Hi @lefticus \u2014 I tried to address the review feedback but couldn't produce a working change. May need human attention.",
+          "url": "https://github.com/cpp-best-practices/cmake_template/pull/145#issuecomment-4230286838",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "cpp-best-practices/cmake_template#pr144",
+      "type": "issue-fix",
+      "owner": "cpp-best-practices",
+      "repo": "cmake_template",
+      "issue": {
+        "number": 134,
+        "title": "ENABLE_DEVELOPER_MODE is still relevant?",
+        "url": "https://github.com/cpp-best-practices/cmake_template/issues/134",
+        "state": "open"
+      },
+      "pr": {
+        "number": 144,
+        "title": "[WIP] Issue #134 \u2014 ENABLE_DEVELOPER_MODE is still relevant?",
+        "url": "https://github.com/cpp-best-practices/cmake_template/pull/144",
+        "state": "draft",
+        "merged": false,
+        "draft": true,
+        "created_at": "2026-04-11T20:58:32Z",
+        "merged_at": null
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T21:52:34Z",
+          "author": "codecov[bot]",
+          "author_avatar": "https://avatars.githubusercontent.com/in/254?v=4",
+          "type": "issue_comment",
+          "body": "## [Codecov](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/144?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices) Report\n:white_check_mark: All modified and coverable lines are covered by tests.\n:white_check_mark: Project coverage is 20.50%. Comparing base ([`12e3e37`](https://app.codecov.io/gh/cpp-best-practices/cmake_template/commit/12e3e376cd9264781635ec81e5c76a45ff901d5e?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices)) to head ([`48f0d76`](https://app.codecov.io/gh/cpp-best-practices/cmake_template/commit/48f0d7681fd147ccd418c7f25173895267481006?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices)).\n\n<details><summary>Additional details and impacted files</summary>\n\n\n\n```diff\n@@           Coverage Diff           @@\n##             main     #144   +/-   ##\n=======================================\n  Coverage   20.50%   20.50%           \n=======================================\n  Files           5        5           \n  Lines         239      239           \n  Branches      108      110    +2     \n=======================================\n  Hits           49       49           \n+ Misses        186      185    -1     \n- Partials        4        5    +1     \n```\n\n| [Flag](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/144/flags?src=pr&el=flags&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices) | Coverage \u0394 | |\n|---|---|---|\n| [Linux](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/144/flags?src=pr&el=flag&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices) | `18.36% <\u00f8> (\u00f8)` | |\n| [Windows](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/144/flags?src=pr&el=flag&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices) | `21.02% <\u00f8> (\u00f8)` | |\n| [macOS](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/144/flags?src=pr&el=flag&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices) | `18.87% <\u00f8> (\u00f8)` | |\n\nFlags with carried forward coverage won't be shown. [Click here](https://docs.codecov.io/docs/carryforward-flags?utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices#carryforward-flags-in-the-pull-request-comment) to find out more.\n</details>\n\n[:umbrella: View full report in Codecov by Sentry](https://app.codecov.io/gh/cpp-best-practices/cmake_template/pull/144?dropdown=coverage&src=pr&el=continue&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices).   \n:loudspeaker: Have feedback on the report? [Share it here](https://about.codecov.io/codecov-pr-comment-feedback/?utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=cpp-best-practices).\n<details><summary> :rocket: New features to boost your workflow: </summary>\n\n- :snowflake: [Test Analytics](https://docs.codecov.com/docs/test-analytics): Detect flaky tests, report on failures, and find test suite problems.\n</details>",
+          "url": "https://github.com/cpp-best-practices/cmake_template/pull/144#issuecomment-4230242947",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr663",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 405,
+        "title": "push_back() on script-created vector has no effect if vector_conversion is in effect",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/405",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 663,
+        "title": "Fix #405: push_back() on script-created vector has no effect if vector_conversion is in effect",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/663",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T20:49:15Z",
+        "merged_at": "2026-04-11T21:45:22Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T20:53:45Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot don't reference issue numbers in comments. Your test registers the type conversion, but doesn't do any round trip testing or usage of that type conversion that I can see",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/663#issuecomment-4230163128",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T21:01:49Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\nf9711f6b Address review: remove issue references from comments, add round-trip conversion tests\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/663#issuecomment-4230173834",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#444",
+      "type": "comment-reply",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 444,
+        "title": "Suggestion: Class destructors for RAII",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/444",
+        "state": "open"
+      },
+      "pr": null,
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T20:27:45Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot what impact would adding destructors to chaiscript objects have? We have *mostly* deterministic destruction, but objects are also implicity sharable",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/444#issuecomment-4230128467",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:32:35Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Great question \u2014 this gets into some fundamental tension in how `Boxed_Value` manages object lifetimes. Here's what I see after tracing through the internals:\n\n### How objects are shared today\n\nEvery `Boxed_Value` holds a `std::shared_ptr<Data>` (`boxed_value.hpp:254`). Copying a `Boxed_Value` copies the shared pointer, meaning multiple variables can silently alias the same underlying object. The `clone_if_necessary` function (`chaiscript_eval.hpp:94-110`) clones on `auto x = expr` declarations, but direct assignment and parameter passing share the pointer. Return values skip cloning entirely via the `is_return_value()` flag.\n\nWhen a scope ends, `pop_scope` (`dispatchkit.hpp:483-490`) simply pops the `Scope` map off the stack \u2014 the `Boxed_Value`s in that scope are destroyed, which decrements `shared_ptr` refcounts, but there's no hook for running user-defined cleanup.\n\n### The core problem: *when* does the destructor fire?\n\nThere are two possible strategies, and both have serious issues:\n\n**Option A: Fire on scope exit (deterministic, like C++ locals)**\n- You'd iterate the scope being popped and call the destructor for any `Dynamic_Object` found\n- But the object may still be alive \u2014 another variable, a container, or a return value could hold a reference to the same `shared_ptr<Data>`. You'd be calling a destructor on a live object\n- This is the \"mostly deterministic\" case you mention, and it's the more useful one for RAII, but it breaks the implicit sharing model\n\n**Option B: Fire on last `shared_ptr` release (ref-counted, like Python `__del__`)**\n- You'd install a custom deleter on the `shared_ptr<Dynamic_Object>` inside `Boxed_Value::Data`\n- This is less useful for RAII because you can't predict *when* the destructor runs \u2014 any stray copy extends the lifetime\n- The `Dynamic_Object` constructor (`dynamic_object_detail.hpp:188-195`) creates the object as a value type, which goes through `Object_Data::get(T t, ...)` at `boxed_value.hpp:120-124`, wrapping it in `make_shared<Dynamic_Object>`. You'd need to inject a custom deleter at that point, which means the constructor would need to resolve the destructor function eagerly\n\n### Additional complications\n\n1. **Destructor dispatch is expensive**: Unlike C++ where vtable dispatch is ~0 cost, calling a ChaiScript destructor means looking up a function by name, dispatching through `Dynamic_Object_Function`'s type guard, and calling through `Proxy_Function`. Doing this during scope teardown (which currently has zero per-object cost) adds overhead to *every* scope exit, or requires tracking which objects have destructors.\n\n2. **Exception safety**: If a ChaiScript destructor throws during scope unwinding (especially during exception propagation from `catch`/`finally` equivalents), you're in double-fault territory. C++ `std::terminate`s in this case. You'd need to swallow exceptions in destructors, which means silent failures in cleanup code \u2014 the exact thing RAII is supposed to prevent.\n\n3. **Clone semantics**: `clone_if_necessary` calls a user-registered `clone` function for non-arithmetic types. A cloned `Dynamic_Object` would need its own destructor call. Does cloning a destructible object produce another destructible object? If so, the clone function itself needs to be destructor-aware.\n\n4. **Circular references**: `Dynamic_Object` attributes (`dynamic_object.hpp:120`) are `Boxed_Value`s containing `shared_ptr`s. If object A holds a reference to object B and vice versa, the refcount never reaches zero. Option B would leak; Option A would double-destruct or destruct in arbitrary order.\n\n### What might be workable\n\nThe most pragmatic approach would be a **scope-exit callback model** rather than true object destructors \u2014 something closer to Go's `defer` than C++ RAII:\n\n- A `defer` or `scope_exit` function registered in the scope that runs a lambda on scope exit\n- Implemented by adding a \"cleanup callback list\" to the scope in `Stack_Holder` that `pop_scope` drains\n- Sidesteps the sharing problem entirely \u2014 it's tied to the *scope*, not the *object*\n- Still deterministic and useful for the RAII use case in the original issue\n\nIf true object destructors are desired, Option A (fire on scope exit) is probably the right call, but it needs a clear rule: **the destructor is called when a named variable goes out of scope, not when the object is freed.** This means destructors can run on still-referenced objects, so users need to understand it's a scope hook, not a C++ destructor. You'd want to only call it for non-reference, non-shared locals (i.e., when `is_return_value()` is false and the object was created or cloned into this scope).",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/444#issuecomment-4230135071",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr662",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 472,
+        "title": "Emscripten Frontend",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/472",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 662,
+        "title": "Fix #472: Emscripten Frontend",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/662",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T20:22:12Z",
+        "merged_at": "2026-04-11T21:58:28Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T20:26:01Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot what is the next steps for actually utilizing this on the website?",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/662#issuecomment-4230126256",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:33:51Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Good question. Right now the workflow builds the artifacts and uploads them via `actions/upload-artifact`, but there's no deployment step \u2014 the WASM build just sits as a downloadable zip on the Actions run. Here's what I'd suggest as next steps:\n\n### 1. Decide on hosting strategy\n\nA few options depending on where chaiscript.com is hosted:\n\n- **GitHub Pages** (simplest): Add a deployment step to the workflow that publishes `chaiscript.js`, `chaiscript.wasm`, and `chaiscript.html` to a `gh-pages` branch or uses the `actions/deploy-pages` action. Could live at something like `chaiscript.com/playground`.\n- **Embed in existing site**: If chaiscript.com is built separately (e.g., Jekyll, Hugo, or a custom site), the workflow could push the built artifacts to that site's repo or an S3 bucket / CDN as part of a release.\n- **Subdomain**: Host at `try.chaiscript.com` or `playground.chaiscript.com` pointing to GitHub Pages on this repo.\n\n### 2. Integrate with the site design\n\nThe current `chaiscript.html` is a standalone page. To integrate with the existing site you'd want to either:\n- Embed it in the site's existing layout/navigation (header, footer, links)\n- Or keep it standalone but link to it from the main site\n\n### 3. Serve `.wasm` with correct MIME type\n\nWhatever hosting you use needs to serve `.wasm` files with `Content-Type: application/wasm`. GitHub Pages does this correctly out of the box. If using another host, this may need configuration.\n\n### 4. Trigger deployment on release (not every push)\n\nThe current workflow runs on every push/PR to `develop`/`main`. For the actual website deployment, you'd probably want to either:\n- Deploy only from `develop`/`main` pushes (not PRs)\n- Or tie deployment to tagged releases\n\n### 5. Concrete next step\n\nThe smallest useful change would be adding a GitHub Pages deploy job to `emscripten.yml`. Something like:\n\n```yaml\n  deploy:\n    needs: emscripten\n    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'\n    runs-on: ubuntu-latest\n    permissions:\n      pages: write\n      id-token: write\n    environment:\n      name: github-pages\n      url: ${{ steps.deployment.outputs.page_url }}\n    steps:\n      - uses: actions/download-artifact@v4\n        with:\n          name: chaiscript-web\n          path: site\n      - uses: actions/configure-pages@v4\n      - uses: actions/upload-pages-artifact@v4\n        with:\n          path: site\n      - id: deployment\n        uses: actions/deploy-pages@v4\n```\n\nThat would get the playground live immediately. Want me to add a deployment job to the workflow?",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/662#issuecomment-4230136960",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:45:31Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot can it be deployed to https://github.com/ChaiScript/chaiscript.github.io directly with an action? The site is currently in a separate repo, not in the gh-pages branch",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/662#issuecomment-4230152268",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:52:50Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Yes, absolutely. You can push to `ChaiScript/chaiscript.github.io` from this repo's workflow using a deploy key or a PAT. Here's the approach:\n\n### Using a deploy key (recommended)\n\n1. Generate an SSH keypair (`ssh-keygen -t ed25519 -f deploy_key -N \"\"`)\n2. Add the **public** key as a deploy key on `ChaiScript/chaiscript.github.io` with write access\n3. Add the **private** key as a secret (e.g., `DEPLOY_KEY`) on `ChaiScript/ChaiScript`\n\nThen add a deploy job to the workflow:\n\n```yaml\n  deploy:\n    needs: emscripten\n    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/download-artifact@v4\n        with:\n          name: chaiscript-web\n          path: artifacts\n\n      - name: Clone target repo\n        env:\n          SSH_KEY: ${{ secrets.DEPLOY_KEY }}\n        run: |\n          mkdir -p ~/.ssh\n          echo \"$SSH_KEY\" > ~/.ssh/deploy_key\n          chmod 600 ~/.ssh/deploy_key\n          export GIT_SSH_COMMAND=\"ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no\"\n          git clone git@github.com:ChaiScript/chaiscript.github.io.git target\n\n      - name: Copy artifacts and push\n        run: |\n          export GIT_SSH_COMMAND=\"ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no\"\n          # Copy into a subdirectory so it doesn't clobber the existing site\n          mkdir -p target/playground\n          cp artifacts/build-em/chaiscript.js target/playground/\n          cp artifacts/build-em/chaiscript.wasm target/playground/\n          cp artifacts/build-em/chaiscript.html target/playground/index.html\n          cd target\n          git config user.name \"github-actions[bot]\"\n          git config user.email \"github-actions[bot]@users.noreply.github.com\"\n          git add playground/\n          git diff --cached --quiet || git commit -m \"Update ChaiScript playground from ChaiScript/ChaiScript@${GITHUB_SHA::8}\"\n          git push\n```\n\nThis would make the playground available at `chaiscript.com/playground` (or whatever path the site uses) without interfering with the rest of the site content.\n\n### Alternative: PAT\n\nA GitHub PAT with `repo` scope stored as a secret also works (`git clone https://x-access-token:${{ secrets.PAT }}@github.com/ChaiScript/chaiscript.github.io.git`), but a deploy key is scoped to just that one repo, which is cleaner from a security perspective.\n\nWant me to update the workflow in this PR to include the deploy job? You'd just need to set up the deploy key / secret on both repos.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/662#issuecomment-4230161953",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:55:38Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot can it possibly go the other way there the website is triggered to rebuild whenever there's a new artifact on \"main\" or \"develop\" here so that we don't need to do the keys and permissions thing?",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/662#issuecomment-4230165586",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T21:06:00Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Unfortunately, there's no fully \"zero-auth\" way to trigger a cross-repo workflow in GitHub Actions. The `workflow_run` trigger only works within the same repository, and `repository_dispatch` (the standard way to trigger repo B from repo A) still requires a token with write access to the target repo.\n\nThat said, there's a lightweight approach that avoids deploy keys entirely:\n\n### Publish as a GitHub Release asset (no cross-repo auth needed)\n\n1. **This repo's workflow** attaches the built `.js`, `.wasm`, and `.html` files as assets on a GitHub Release (or even a \"rolling\" pre-release tag like `latest-wasm`). Release assets on public repos are downloadable without authentication.\n\n2. **The website repo** has a simple scheduled workflow (e.g., every 15 minutes or hourly) that:\n   - Fetches the latest release from `ChaiScript/ChaiScript` via the public API\n   - Downloads the assets\n   - Checks if they differ from what's already committed\n   - If changed, commits and pushes \u2192 triggers a site rebuild\n\n```yaml\n# In chaiscript.github.io\non:\n  schedule:\n    - cron: '*/15 * * * *'  # every 15 min\n\njobs:\n  update-playground:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Fetch latest WASM build\n        run: |\n          mkdir -p playground\n          # Public API, no token needed for public repos\n          RELEASE=$(curl -s https://api.github.com/repos/ChaiScript/ChaiScript/releases/tags/wasm-latest)\n          for file in chaiscript.js chaiscript.wasm chaiscript.html; do\n            URL=$(echo \"$RELEASE\" | jq -r \".assets[] | select(.name==\\\"$file\\\") | .browser_download_url\")\n            curl -sL \"$URL\" -o \"playground/$file\"\n          done\n\n      - name: Commit if changed\n        run: |\n          git config user.name \"github-actions[bot]\"\n          git config user.email \"github-actions[bot]@users.noreply.github.com\"\n          git add playground/\n          git diff --cached --quiet || git commit -m \"Update ChaiScript playground\"\n          git push\n```\n\nThe tradeoff is up to 15 minutes of latency (or whatever cron interval you pick), but it requires **zero secrets, zero keys, zero cross-repo permissions**. The website repo just pulls from a public URL.\n\n### If you want instant triggering\n\nYou'd need at minimum a fine-grained PAT stored as a secret in this repo, scoped to just `ChaiScript/chaiscript.github.io` with `actions:write` permission \u2014 then this repo sends a `repository_dispatch` event. It's the lightest auth option for real-time triggering, but it does still require one secret.\n\nThe cron-based approach is probably the better fit here given that playground updates aren't time-critical.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/662#issuecomment-4230179210",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T21:41:45Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot update this emscripten thing to publish assets under some tag, but only from `develop` branch, that is then fetchable by the website cron (daily is fine, really) then I'm going to tell you to update the website too.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/662#issuecomment-4230229153",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T21:46:48Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n316d605f Address review: publish WASM assets as release under wasm-latest tag\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/662#issuecomment-4230235740",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#473",
+      "type": "comment-reply",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 473,
+        "title": "Variable Assignment and Return `return foo = 5`",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/473",
+        "state": "open"
+      },
+      "pr": null,
+      "conversation": [
+        {
+          "timestamp": "2019-02-08T15:52:47Z",
+          "author": "RobLoach",
+          "author_avatar": "https://avatars.githubusercontent.com/u/25086?v=4",
+          "type": "issue_comment",
+          "body": "```\r\nreturn this.size = ret[\"numrows\"];\r\n```\r\n\r\nTry changing this to...\r\n\r\n```\r\nthis.size = ret[\"numrows\"]\r\nreturn this.size\r\n```\r\n\r\nUnsure return assignment works.",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/473#issuecomment-461848283",
+          "path": null
+        },
+        {
+          "timestamp": "2019-02-09T05:19:07Z",
+          "author": "toutant",
+          "author_avatar": "https://avatars.githubusercontent.com/u/7303711?v=4",
+          "type": "issue_comment",
+          "body": "yah - as i pointed out in the original comments\r\n\r\n\r\nthis does work\r\nthis.size = ret[\"numrows\"]\r\nreturn this.size\r\n\r\nthis does not\r\n return this.size = ret[\"numrows\"];\r\n\r\nI have not tried return (this.size = ret[\"numrows\"]);\r\n\r\n\r\n",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/473#issuecomment-462014926",
+          "path": null
+        },
+        {
+          "timestamp": "2019-04-25T22:32:14Z",
+          "author": "RobLoach",
+          "author_avatar": "https://avatars.githubusercontent.com/u/25086?v=4",
+          "type": "issue_comment",
+          "body": "That doesn't work either, unfortunately. Seems assignment returns are not in place.",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/473#issuecomment-486861280",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:01:00Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot can you make this work without fundamentally changing assignment operations? is this a parser problem?",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/473#issuecomment-4230090494",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:09:01Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Yes, this is purely a parser problem and can be fixed with a one-line change \u2014 no need to touch assignment operations at all.\n\n**Root cause:** In `include/chaiscript/language/chaiscript_parser.hpp`, the `Return()` function (line 2280) calls `Operator()` to parse the return value expression:\n\n```cpp\nbool Return() {\n    // ...\n    if (Keyword(\"return\")) {\n        Operator();  // \u2190 only parses arithmetic/logical operators, NOT assignments\n        build_match<eval::Return_AST_Node<Tracer>>(prev_stack_top);\n        return true;\n    }\n    // ...\n}\n```\n\n`Operator()` handles the standard precedence chain (ternary, `||`, `&&`, comparisons, arithmetic, etc.) but **not** assignment operators (`=`, `:=`, `+=`, etc.). Those are handled by `Equation()`, which wraps `Operator()` and adds assignment parsing on top.\n\nSo when the parser sees `return this.size = ret[\"numrows\"]`:\n1. `Return()` matches `return`\n2. `Operator()` parses `this.size` and stops at `=` (not a recognized operator)\n3. The return node is built with just `this.size`\n4. The remaining `= ret[\"numrows\"]` is left dangling \u2192 \"Incomplete Block\"\n\n**The fix:** Change `Operator()` to `Equation()` on line 2285:\n\n```cpp\nif (Keyword(\"return\")) {\n    Equation();  // now parses full expressions including assignments\n    build_match<eval::Return_AST_Node<Tracer>>(prev_stack_top);\n```\n\nThis is consistent with how other constructs already work \u2014 `If` conditions (line 1938), `for` loop components (line 2075), and function arguments (line 1695) all call `Equation()` rather than `Operator()`. The `Return_AST_Node` eval in `chaiscript_eval.hpp` already handles child expressions correctly, so no changes needed there.\n\nThis would enable `return foo = 5`, `return x += 1`, etc., matching C/C++ semantics where assignment is an expression.",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/473#issuecomment-4230102286",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#520",
+      "type": "comment-reply",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 520,
+        "title": "How to get error line and column on the script? if it throw error from custom function?",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/520",
+        "state": "open"
+      },
+      "pr": null,
+      "conversation": [
+        {
+          "timestamp": "2020-05-13T05:40:11Z",
+          "author": "gellston",
+          "author_avatar": "https://avatars.githubusercontent.com/u/42884297?v=4",
+          "type": "issue_comment",
+          "body": "please could you let me know how to get script error line when throw exception from custom function? ",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/520#issuecomment-627757896",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:02:00Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot is this currently possible?",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/520#issuecomment-4230091903",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:06:31Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "**Yes, this is partially possible today, but it requires the script to use try/catch.**\n\nWhen a registered C++ function throws a `std::runtime_error`, ChaiScript does **not** automatically wrap it in an `eval_error` with script line/column information. The exception propagates straight through the evaluation engine back to the C++ host code. You can see this in `include/chaiscript/language/chaiscript_eval.hpp` \u2014 the `Fun_Call_AST_Node::do_eval_internal()` (around line 318) only catches ChaiScript-internal exceptions (`dispatch_error`, `bad_boxed_cast`, `arity_error`, `guard_error`) and wraps those in `eval_error`. A `std::runtime_error` passes through uncaught.\n\n**Workaround using script-side try/catch:**\n\nThe script can catch the exception and it will be boxed:\n\n```chaiscript\ntry {\n  var image1 = cv.imread(\"missing.png\", false);\n} catch(e) {\n  // e contains the runtime_error message, and ChaiScript knows the script location of the try block\n}\n```\n\nThis works because `Try_AST_Node` (line ~1351 in `chaiscript_eval.hpp`) does catch `std::runtime_error` and boxes it for script-level handling.\n\n**What would be needed for automatic wrapping:**\n\nTo get script position info on exceptions thrown from C++ functions without a script-side try/catch, a catch for `std::exception` (or `std::runtime_error`) could be added to `Fun_Call_AST_Node::do_eval_internal()` alongside the existing catches, converting it to an `eval_error` with position info. Something like:\n\n```cpp\n} catch (const std::exception &e) {\n  throw exception::eval_error(\n    std::string(e.what()) + \" in call to '\" + this->children[0]->text + \"'\");\n}\n```\n\nThis would ensure any C++ exception thrown from a registered function gets wrapped with the call stack trace that `eval_error` provides (the `AST_Node_Impl::eval()` method at line 138 pushes each node onto the `eval_error::call_stack` as it propagates).\n\nSo to directly answer: script-side `try/catch` works today, but automatic line/column info on raw C++ exceptions would require a small change to the eval engine.",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/520#issuecomment-4230098942",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr661",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 660,
+        "title": "Windows builds are broken",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/660",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 661,
+        "title": "Fix #660: Windows builds are broken",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/661",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T20:03:26Z",
+        "merged_at": "2026-04-11T21:06:33Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T20:15:25Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot windows supports asan and ubsan too, so make sure you also use those. Update the cmake lists if necessary. Look into the details for how to enable it.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/661#issuecomment-4230110950",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:25:04Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot remove appveyor file so we stop getting builds for it.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/661#issuecomment-4230124976",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:29:03Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\nc7e4ae2b Address review: add Windows ASAN+UBSAN sanitizer support\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/661#issuecomment-4230130250",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:47:04Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot remove appveyor config file. remove asan/ubsan for windows. Add TSAN targets for macos/linux",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/661#issuecomment-4230154415",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:51:54Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n6516e08d Address review: remove Windows sanitizers, add TSAN for Linux/macOS\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/661#issuecomment-4230160705",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:56:52Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot delete the appveyor.yml file",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/661#issuecomment-4230167087",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T20:59:07Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Hi @lefticus \u2014 I tried to address the review feedback but couldn't produce a working change. May need human attention.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/661#issuecomment-4230169993",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr659",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 631,
+        "title": "respecting CMake's CMAKE_INSTALL_PREFIX for installation",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/631",
+        "state": "open"
+      },
+      "pr": {
+        "number": 659,
+        "title": "[WIP] Issue #631 \u2014 respecting CMake's CMAKE_INSTALL_PREFIX for installation",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/659",
+        "state": "draft",
+        "merged": false,
+        "draft": true,
+        "created_at": "2026-04-11T17:41:58Z",
+        "merged_at": null
+      },
+      "conversation": []
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr658",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 615,
+        "title": "Switch to GitHub Actions",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/615",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 658,
+        "title": "[WIP] Issue #615 \u2014 Switch to GitHub Actions",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/658",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T17:34:46Z",
+        "merged_at": "2026-04-11T19:40:04Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T18:27:46Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot use the native compiler on each os. Visual Studio on Windows, apple clang on macos, gcc on linux. remove msys and mingw testing. Also your workflow file is invalid: validate it before pushing: https://github.com/leftibot/ChaiScript/actions/runs/24287850538",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/658#issuecomment-4229946467",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T18:34:43Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n4774f352 Address review: use native compilers, remove MSYS/MinGW\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/658#issuecomment-4229959854",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T18:46:58Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot make sure the github actions are running on the leftibot fork so we know that they are actually working. ",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/658#issuecomment-4229986651",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T18:52:41Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n8b8b047d Address review: add workflow_dispatch to enable manual CI runs on fork\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/658#issuecomment-4229994248",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr657",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 571,
+        "title": "How to redirect \"cout\" and \"print\" to a microsoft Windows 10 window? ",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/571",
+        "state": "open"
+      },
+      "pr": {
+        "number": 657,
+        "title": "Fix #571: How to redirect \"cout\" and \"print\" to a microsoft Windows 10 window? ",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/657",
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "created_at": "2026-04-11T17:28:44Z",
+        "merged_at": null
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T20:59:25Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot update cheatsheet with info on this capability",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/657#issuecomment-4230170388",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T21:05:03Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n3572174f Address review: add IO redirection section to cheatsheet\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/657#issuecomment-4230178036",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T21:45:52Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot fix merge conflicts",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/657#issuecomment-4230234536",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T21:52:11Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\ne7b47850 Address review: fix merge conflicts with develop\n92abd226 Fix #660: Windows builds are broken (#661)\n1619d846 Fix #607: Remove unnecessary forward declarations that cause C++20 build failures (#647)\nbc771ab8 [WIP] Issue #615 \u2014 Switch to GitHub Actions (#658)\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/657#issuecomment-4230242458",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T22:10:10Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot fix merge conflicts",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/657#issuecomment-4230268053",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T22:16:30Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n973f9c55 Address review: fix merge conflicts with develop\n7b95ff51 Fix #655: Async issues with threads outliving the chaiscript engine (#656)\n1b27d0dd Fix #459: Fill out the set of conversion functions for all POD types (#664)\n340e7d4b Fix #472: Emscripten Frontend (#662)\n255ff87f Fix #405: push_back() on script-created vector has no effect if vector_conversion is in effect (#663)\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/657#issuecomment-4230276083",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#612",
+      "type": "comment-reply",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 612,
+        "title": "\"Recommended\" way of binding specific function overloads doesn't work on clang 14",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/612",
+        "state": "open"
+      },
+      "pr": null,
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T17:16:01Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot can you investigate this issue?",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/612#issuecomment-4229838883",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T17:20:25Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "I investigated this issue. Here's what I found:\n\n**Root Cause: The `fun<Sig>` syntax was documented but never properly implemented.**\n\nThe current `fun` implementation in `include/chaiscript/dispatchkit/register_function.hpp:80-83` has only one relevant overload:\n\n```cpp\ntemplate<typename T>\nProxy_Function fun(T &&t) { ... }\n```\n\nWhen you write `fun<std::vector<string>(string const&, string const&, bool)>(&ci::split)`, you're explicitly setting `T` to a **function type** `std::vector<string>(string const&, string const&, bool)`, making the parameter type `T&&` a **function rvalue reference**. But `&ci::split` is a **function pointer** \u2014 these types don't match. MSVC happens to accept this (likely through a non-standard implicit conversion), while clang correctly rejects it.\n\nFor member function pointers (like the example in `chaiscript.hpp:204`), `fun<void (MyClass::*)()>` sets `T` to a pointer-to-member type, which is closer to what `&MyClass::method` produces, so that form may work more broadly. But for free functions, specifying a function type vs. a function pointer type is a real mismatch.\n\nThere's already a `\\todo` acknowledging this at `unittests/compiled_tests.cpp:536`:\n```cpp\n/// \\todo fix overload resolution for fun<>\n```\n\nAnd the test code itself uses the `static_cast` workaround (`compiled_tests.cpp:544-546`).\n\n**To fix this**, an additional overload of `fun` could be added that accepts a function pointer when the signature is explicitly specified:\n\n```cpp\n// For free functions: fun<Ret(Args...)>(&overloaded)\ntemplate<typename Ret, typename... Args>\nProxy_Function fun(Ret (*f)(Args...)) {\n  return dispatch::detail::make_callable(f, dispatch::detail::function_signature(f));\n}\n\n// For member functions: fun<Ret(Class::*)(Args...)>(&Class::overloaded)\ntemplate<typename Ret, typename Class, typename... Args>\nProxy_Function fun(Ret (Class::*f)(Args...)) {\n  return dispatch::detail::make_callable(f, dispatch::detail::function_signature(f));\n}\n// (plus const/volatile/noexcept variants as needed)\n```\n\nThese overloads would let the user write `fun<Ret(Params...)>(&overloaded)` and have the explicit template arguments guide overload resolution of the function pointer argument, which is the intended use case. The existing `template<typename T> fun(T&&)` overload would continue to handle the non-ambiguous (single overload) case via deduction.\n\nAlternatively, a simpler single overload using `std::type_identity_t` could prevent deduction on T, forcing the user to specify it explicitly \u2014 though this might interfere with the deduction-based path.\n\n**TL;DR**: This is a known issue (see the TODO). The cheatsheet's \"preferred\" syntax for free function overloads doesn't work on standards-conforming compilers. The `static_cast` approach is the correct workaround for now. A fix would require adding explicit overloads of `fun` for function pointers and member function pointers. Would you like me to implement a fix?",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/612#issuecomment-4229845802",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#621",
+      "type": "comment-reply",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 621,
+        "title": "member variable through getter & setter",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/621",
+        "state": "open"
+      },
+      "pr": null,
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T17:13:18Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot I think the main goal here would be to have read-only-from-chaiscript attributes, really. If you want getters and setters, I think you want to add those from C++ land. Can you investigate and make suggestions for read-only member variables??",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/621#issuecomment-4229834598",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T17:17:33Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Great question. I dug into the internals to understand how this could work cleanly.\n\n### How member attributes work today\n\nWhen you register `chaiscript::fun(&MyClass::x)`, the system creates an `Attribute_Access<T, Class>` proxy (`include/chaiscript/dispatchkit/proxy_functions.hpp:600-664`). Its `do_call` checks whether the *object* is const:\n\n- **Non-const object** \u2192 returns a mutable `std::ref(o->*m_attr)` (writable from script)\n- **Const object** \u2192 returns a `std::cref(o->*m_attr)` (read-only from script)\n\nSo if you pass a `const` object into ChaiScript, its attributes are already read-only. But for non-const objects, all registered attributes are writable.\n\n### Suggested approach: `Const_Attribute_Access` + `chaiscript::fun_readonly()`\n\nThe cleanest approach I see is:\n\n**1. Add a `Const_Attribute_Access` class** in `proxy_functions.hpp` alongside `Attribute_Access`. It would be nearly identical but always takes the const path in `do_call`:\n\n```cpp\ntemplate<typename T, typename Class>\nclass Const_Attribute_Access final : public Proxy_Function_Base {\npublic:\n  explicit Const_Attribute_Access(T Class::*t_attr)\n      : Proxy_Function_Base(param_types(), 1)\n      , m_attr(t_attr) {\n  }\n\n  bool is_attribute_function() const noexcept override { return true; }\n\n  // ... operator== and call_match same as Attribute_Access ...\n\nprotected:\n  Boxed_Value do_call(const Function_Params &params, const Type_Conversions_State &t_conversions) const override {\n    const Boxed_Value &bv = params[0];\n    // Always use the const path, regardless of object constness\n    const Class *o = bv.is_const()\n        ? boxed_cast<const Class *>(bv, &t_conversions)\n        : static_cast<const Class *>(boxed_cast<Class *>(bv, &t_conversions));\n    return do_call_impl(o);\n  }\n\nprivate:\n  auto do_call_impl(const Class *o) const {\n    if constexpr (std::is_pointer<T>::value) {\n      return detail::Handle_Return<const T>::handle(o->*m_attr);\n    } else {\n      return detail::Handle_Return<typename std::add_lvalue_reference<typename std::add_const<T>::type>::type>::handle(o->*m_attr);\n    }\n  }\n\n  static std::vector<Type_Info> param_types() { return {user_type<T>(), user_type<Class>()}; }\n  T Class::*m_attr;\n};\n```\n\n**2. Add a `fun_readonly()` convenience function** in `register_function.hpp`:\n\n```cpp\n/// Creates a read-only attribute accessor from a member data pointer.\n/// The attribute will not be assignable from ChaiScript even on non-const objects.\ntemplate<typename T, typename Class>\nProxy_Function fun_readonly(T Class::*member) {\n  return Proxy_Function(\n      chaiscript::make_shared<dispatch::Proxy_Function_Base, \n          dispatch::Const_Attribute_Access<T, Class>>(member));\n}\n```\n\n**3. Usage would be:**\n\n```cpp\nstruct MyClass {\n  int x;\n  std::string name;\n};\n\nchaiscript::ChaiScript chai;\nchai.add(chaiscript::user_type<MyClass>(), \"MyClass\");\nchai.add(chaiscript::fun_readonly(&MyClass::x), \"x\");       // read-only\nchai.add(chaiscript::fun_readonly(&MyClass::name), \"name\");  // read-only\nchai.add(chaiscript::fun(&MyClass::some_method), \"some_method\"); // methods still work\n```\n\nFrom ChaiScript, `obj.x` would return the value but `obj.x = 42` would fail because the returned `Boxed_Value` holds a `const` reference.\n\n### Why this approach\n\n- **Mirrors existing patterns** \u2014 `Const_Attribute_Access` is a natural sibling to `Attribute_Access`, following the same structure\n- **Minimal surface area** \u2014 one new class + one new free function; no changes to the dispatch engine, `Boxed_Value`, or evaluation\n- **No runtime overhead** \u2014 the constness is baked in at registration time, not checked dynamically\n- **Works with the existing const system** \u2014 `Handle_Return<const T&>` already produces const `Boxed_Value`s via `std::cref`, and the assignment operator in the eval engine already rejects writes to const values\n\n### Alternative: template bool on `Attribute_Access`\n\nInstead of a separate class, you could add a `bool ReadOnly` template parameter to `Attribute_Access` and use `if constexpr` in `do_call`. This avoids code duplication but makes the existing class slightly more complex. Either way works \u2014 I'd lean toward the separate class for clarity since the two classes are small.\n\nWant me to implement this and put together a PR?",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/621#issuecomment-4229841293",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr656",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 655,
+        "title": "Async issues with threads outliving the chaiscript engine",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/655",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 656,
+        "title": "Fix #655: Async issues with threads outliving the chaiscript engine",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/656",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T16:24:51Z",
+        "merged_at": "2026-04-11T22:12:41Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T19:41:09Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot prior to this change, ChaiScript engine was copyable, but now it's not?",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/656#issuecomment-4230062725",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T19:44:21Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Good question. The `ChaiScript_Basic` class (and therefore `ChaiScript`) was already non-copyable prior to this change because it holds a `std::unique_ptr<parser::ChaiScript_Parser_Base> m_parser` member (`include/chaiscript/language/chaiscript_engine.hpp:75`), which deletes the copy constructor implicitly.\n\nWhat this PR adds is the *explicit* `= delete` on `Dispatch_Engine`'s copy constructor and copy assignment (`include/chaiscript/dispatchkit/dispatchkit.hpp`), which makes the intent clear and provides better error messages, but doesn't change the user-facing API \u2014 `ChaiScript` was already move-only in practice.\n\nThat said, the explicit delete is still the right thing to do here since `Dispatch_Engine` now owns `std::vector<std::thread>`, which is itself non-copyable \u2014 so the compiler would have deleted the copy operations anyway. The explicit annotation just documents the design intent.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/656#issuecomment-4230066972",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T19:54:14Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot update the code to follow the rule of 5 and explicitly =default the move operations then too",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/656#issuecomment-4230081412",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T19:59:18Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n530b492b Address review: follow rule of 5, explicitly default move operations\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/656#issuecomment-4230088007",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr654",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 625,
+        "title": "macOS 15.2 / Runtime error in add_function in dispatchkit",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/625",
+        "state": "open"
+      },
+      "pr": {
+        "number": 654,
+        "title": "Fix #625: macOS 15.2 / Runtime error in add_function in dispatchkit",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/654",
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "created_at": "2026-04-11T15:54:54Z",
+        "merged_at": null
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T19:46:27Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot resolve merge conflicts",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/654#issuecomment-4230069925",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T19:51:42Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n2a3a41ac Merge remote-tracking branch 'origin/develop' into fix/issue-625-macos-15-2-runtime-error-in-add-function\nfa4b8277 Fix #554: Document the difference between add, add_global, and set_global (#649)\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/654#issuecomment-4230077969",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T22:05:40Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot resolve merge conflicts",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/654#issuecomment-4230262272",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T22:09:02Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\nab9aabba Merge remote-tracking branch 'origin/develop' into fix/issue-625-macos-15-2-runtime-error-in-add-function\n92abd226 Fix #660: Windows builds are broken (#661)\n1619d846 Fix #607: Remove unnecessary forward declarations that cause C++20 build failures (#647)\nbc771ab8 [WIP] Issue #615 \u2014 Switch to GitHub Actions (#658)\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/654#issuecomment-4230266652",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T22:27:43Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Hi @lefticus \u2014 I tried to address the review feedback but couldn't produce a working change. May need human attention.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/654#issuecomment-4230290332",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr653",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 636,
+        "title": "[Bug] Heap-use-after-free in chaiscript::Type_Info::bare_equal (Race Condition during eval_error formatting)",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/636",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 653,
+        "title": "Fix #636: [Bug] Heap-use-after-free in chaiscript::Type_Info::bare_equal (Race Condition during eval_error formatting)",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/653",
+        "state": "closed",
+        "merged": false,
+        "draft": false,
+        "created_at": "2026-04-11T15:48:15Z",
+        "merged_at": null
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T19:41:34Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "closing in favor of #655",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/653#issuecomment-4230063267",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr652",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 635,
+        "title": "[Bug] Segmentation Fault in chaiscript::Boxed_Number::get_as via async result interpolation",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/635",
+        "state": "open"
+      },
+      "pr": {
+        "number": 652,
+        "title": "Fix #635: [Bug] Segmentation Fault in chaiscript::Boxed_Number::get_as via async result interpolation",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/652",
+        "state": "closed",
+        "merged": false,
+        "draft": false,
+        "created_at": "2026-04-11T15:36:16Z",
+        "merged_at": null
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T19:41:56Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "closing in favor of #655",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/652#issuecomment-4230063723",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr651",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 632,
+        "title": "[Bug] Heap-use-after-free in chaiscript::str_less::operator() due to race condition",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/632",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 651,
+        "title": "Fix #632: [Bug] Heap-use-after-free in chaiscript::str_less::operator() due to race condition",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/651",
+        "state": "closed",
+        "merged": false,
+        "draft": false,
+        "created_at": "2026-04-11T15:24:36Z",
+        "merged_at": null
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T19:42:09Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "closing in favor of #655",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/651#issuecomment-4230064001",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr650",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 594,
+        "title": "Memory issue with Map keys and Vector.push_back()",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/594",
+        "state": "open"
+      },
+      "pr": {
+        "number": 650,
+        "title": "Fix #594: Memory issue with Map keys and Vector.push_back()",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/650",
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "created_at": "2026-04-11T15:11:32Z",
+        "merged_at": null
+      },
+      "conversation": []
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr649",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 554,
+        "title": "What is the difference between add and add_global\uff1f",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/554",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 649,
+        "title": "Fix #554: What is the difference between add and add_global\uff1f",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/649",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T15:00:16Z",
+        "merged_at": "2026-04-11T17:17:46Z"
+      },
+      "conversation": []
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr648",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 524,
+        "title": "A std::vector of std::unique_ptrs can't be added",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/524",
+        "state": "open"
+      },
+      "pr": {
+        "number": 648,
+        "title": "Fix #524: A std::vector of std::unique_ptrs can't be added",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/648",
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "created_at": "2026-04-11T14:54:46Z",
+        "merged_at": null
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T21:46:21Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot fix merge conflicts",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/648#issuecomment-4230235156",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T21:49:24Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n6eaa4de9 Address review: fix merge conflicts with develop\n92abd226 Fix #660: Windows builds are broken (#661)\n1619d846 Fix #607: Remove unnecessary forward declarations that cause C++20 build failures (#647)\nbc771ab8 [WIP] Issue #615 \u2014 Switch to GitHub Actions (#658)\nfa4b8277 Fix #554: Document the difference between add, add_global, and set_global (#649)\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/648#issuecomment-4230238979",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr647",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 607,
+        "title": "Unable to build in C++20 on Mac",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/607",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 647,
+        "title": "Fix #607: Unable to build in C++20 on Mac",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/647",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T14:43:34Z",
+        "merged_at": "2026-04-11T19:42:40Z"
+      },
+      "conversation": []
+    },
+    {
+      "id": "ChaiScript/chaiscript.github.io#pr5",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "chaiscript.github.io",
+      "issue": {
+        "number": 4,
+        "title": "website updates necessary",
+        "url": "https://github.com/ChaiScript/chaiscript.github.io/issues/4",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 5,
+        "title": "Fix #4: website updates necessary",
+        "url": "https://github.com/ChaiScript/chaiscript.github.io/pull/5",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T14:25:09Z",
+        "merged_at": "2026-04-11T16:15:12Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T14:30:37Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot you went too far, the shields widgets still seem to be working. Also, we don't need tests for website cleanup",
+          "url": "https://github.com/ChaiScript/chaiscript.github.io/pull/5#issuecomment-4229589378",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T16:11:02Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n829d966 Address review: restore shields.io widgets and remove test script\n```",
+          "url": "https://github.com/ChaiScript/chaiscript.github.io/pull/5#issuecomment-4229734344",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr646",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 592,
+        "title": "Potential bug: Local variable saw_eol in Class_Statements() in chaiscript_parser.hpp apparently always true",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/592",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 646,
+        "title": "Fix #592: Potential bug: Local variable saw_eol in Class_Statements() in chaiscript_parser.hpp apparently always true",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/646",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T14:07:06Z",
+        "merged_at": "2026-04-11T14:32:28Z"
+      },
+      "conversation": []
+    },
+    {
+      "id": "ChaiScript/ChaiScript#603",
+      "type": "comment-reply",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 603,
+        "title": "Way to call method on Chaiscript object from C++",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/603",
+        "state": "closed"
+      },
+      "pr": null,
+      "conversation": [
+        {
+          "timestamp": "2022-10-07T11:50:28Z",
+          "author": "mallardtheduck",
+          "author_avatar": "https://avatars.githubusercontent.com/u/6850470?v=4",
+          "type": "issue_comment",
+          "body": "As a workaround, I've created Chaiscript wrapper functions outside of an object that can be called from C++.\r\n\r\ni.e. for the example above:\r\n\r\n(Chaiscript)\r\n```\r\ndef Call_Bar(o, x){\r\n   return o.Bar(x);\r\n}\r\n```\r\n\r\n(C++)\r\n```\r\nauto foo = chai.eval<chaiscript::dispatch::Dynamic_Object>(\"Foo()\");\r\nauto caller = chai.eval<std::function<int(chaiscript::dispatch::Dynamic_Object, int)>>(\"Call_Bar\");\r\nstd::cout << caller(foo, 3) << std::endl;\r\n```\r\n\r\nIt would still be much nicer if there were a proper way to do this...",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/603#issuecomment-1271491032",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T04:16:04Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot can you comment on this issue?",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/603#issuecomment-4228158158",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T04:33:27Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "This is a great question. In ChaiScript, methods defined inside a `class` block are not stored on the `Dynamic_Object` itself \u2014 they're registered as functions in the global dispatch engine, guarded by the object's type name. That's why `get_attrs()` only shows member variables.\n\nThere are a couple of ways to call these methods from C++:\n\n### Option 1: Use `eval()` with the object in scope (simplest)\n\nYou can put the object back into ChaiScript's scope using `add_global` or `set_global`, then call the method via `eval`:\n\n```cpp\nchaiscript::ChaiScript chai;\n\n// Define the class\nchai.eval(R\"(\n  class Foo {\n    def Foo() {}\n    def Bar(x) { return x + 5; }\n  }\n)\");\n\n// Create the object\nauto obj = chai.eval(\"Foo()\");\n\n// Add it to ChaiScript's global scope\nchai.add_global(obj, \"my_foo\");\n\n// Call the method\nauto result = chai.eval<int>(\"my_foo.Bar(3)\");\nstd::cout << result << std::endl; // prints 8\n```\n\n### Option 2: Eval a lambda to get a callable `std::function`\n\nIf you want a reusable C++ callable, you can eval a lambda that wraps the method call:\n\n```cpp\nauto obj = chai.eval(\"Foo()\");\nchai.add_global(obj, \"my_foo\");\n\nauto bar = chai.eval<std::function<int(int)>>(\"fun(x) { my_foo.Bar(x) }\");\nstd::cout << bar(3) << std::endl; // prints 8\n```\n\n### Option 3: Pass the object as a parameter (similar to the workaround above)\n\nThis avoids polluting global scope:\n\n```cpp\nauto obj = chai.eval(\"Foo()\");\n\n// Create a dispatch function that takes the object as a parameter\nauto caller = chai.eval<std::function<Boxed_Value(Boxed_Value, int)>>(\n    \"fun(o, x) { o.Bar(x) }\"\n);\n```\n\n### Why there's no direct C++ method lookup\n\nThe architecture stores class methods as globally dispatched functions (wrapped in `Dynamic_Object_Function` \u2014 see `include/chaiscript/dispatchkit/dynamic_object_detail.hpp`) rather than as per-object method tables. The dispatch engine matches calls based on the object's type name at runtime. This means there isn't a simple `obj.get_method(\"Bar\")` API \u2014 the method resolution always goes through the dispatch engine.\n\nThe `eval`-based approaches above are the intended way to interact with ChaiScript-defined objects from C++. Option 1 is the most straightforward for most use cases.",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/603#issuecomment-4228186223",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr645",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 477,
+        "title": "Unicode Escape for JSON",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/477",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 645,
+        "title": "Fix #477: Handle \\u unicode escape in JSON parser",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/645",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T01:50:40Z",
+        "merged_at": "2026-04-11T03:58:08Z"
+      },
+      "conversation": []
+    },
+    {
+      "id": "ChaiScript/ChaiScript#609",
+      "type": "comment-reply",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 609,
+        "title": "Is it possible to run a program in Windows from ChaiScript?",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/609",
+        "state": "closed"
+      },
+      "pr": null,
+      "conversation": [
+        {
+          "timestamp": "2023-07-03T15:48:20Z",
+          "author": "RobLoach",
+          "author_avatar": "https://avatars.githubusercontent.com/u/25086?v=4",
+          "type": "issue_comment",
+          "body": "If you make a ChaiDcript interface to something like `system`, you would be able to run external applications.",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/609#issuecomment-1618741420",
+          "path": null
+        },
+        {
+          "timestamp": "2023-07-03T22:02:59Z",
+          "author": "claudio-salvio",
+          "author_avatar": "https://avatars.githubusercontent.com/u/66575834?v=4",
+          "type": "issue_comment",
+          "body": "Hello @RobLoach,\r\n\r\nThanks for your prompt reply.\r\nCan you guide me on how to find an example?\r\nI did several searches in Google ([1](https://www.google.com/search?q=%2Bchaiscript+(call|execute|run)+external+program), [2](https://www.google.com/search?q=chaiscript+\"system\"+call), etc.) but I didn't find any.\r\n\r\nUnfortunately at the moment I lack the necessary knowledge of **C++** to be able to act with your answer.\r\nI am not much better in **ChaiScript**, where my experience is limited to the little that was necessary to learn to add some scripts in **Ditto-CP**.\r\n\r\nRegards,\r\nClaudio Salvio",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/609#issuecomment-1619194417",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T00:15:48Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot can you comment on how you could expose `system` (or similar) to ChaiScript. Make a complete example with required `#include` and `main()` to demonstrate the usage. The main question is capturing of output. Can you make the demonstration succinct, and recommend potential libraries to ease the use?",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/609#issuecomment-4227427478",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T01:33:36Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Great question! Here's how to expose `system` (or better alternatives) to ChaiScript.\n\n### Basic: Exposing `std::system`\n\n```cpp\n#include <chaiscript/chaiscript.hpp>\n#include <cstdlib>\n\nint main() {\n  chaiscript::ChaiScript chai;\n  chai.add(chaiscript::fun([](const std::string &cmd) {\n    return std::system(cmd.c_str());\n  }), \"system\");\n\n  chai.eval(R\"(\n    system(\"echo hello\")\n  )\");\n}\n```\n\nThis works but **cannot capture output** \u2014 `std::system` only returns the exit code.\n\n### Capturing Output with `popen`\n\nFor output capture without any external dependencies:\n\n```cpp\n#include <chaiscript/chaiscript.hpp>\n#include <cstdio>\n#include <stdexcept>\n#include <string>\n#include <array>\n\nstd::string exec(const std::string &cmd) {\n  std::array<char, 256> buffer;\n  std::string result;\n  FILE *pipe = popen(cmd.c_str(), \"r\");\n  if (!pipe) { throw std::runtime_error(\"popen() failed\"); }\n  while (fgets(buffer.data(), buffer.size(), pipe)) {\n    result += buffer.data();\n  }\n  int status = pclose(pipe);\n  if (status != 0) {\n    throw std::runtime_error(\"Command failed with status \" + std::to_string(status));\n  }\n  return result;\n}\n\nint main() {\n  chaiscript::ChaiScript chai;\n  chai.add(chaiscript::fun(&exec), \"exec\");\n  chai.add(chaiscript::fun([](const std::string &cmd) {\n    return std::system(cmd.c_str());\n  }), \"system\");\n\n  chai.eval(R\"(\n    var output = exec(\"echo hello world\")\n    print(output)\n\n    // or just fire-and-forget:\n    system(\"notepad.exe\")\n  )\");\n}\n```\n\n`popen`/`pclose` are available on both Windows (as `_popen`/`_pclose`) and POSIX. For portable code:\n\n```cpp\n#ifdef _WIN32\n  #define popen _popen\n  #define pclose _pclose\n#endif\n```\n\n### Libraries for Richer Process Control\n\nIf you need more than just \"run and capture stdout\" (e.g., stdin piping, stderr capture, async execution, timeouts):\n\n- **[reproc](https://github.com/DaanDeMeyer/reproc)** \u2014 Lightweight, cross-platform, C/C++ API. Handles stdin/stdout/stderr redirection cleanly. Good fit for embedding.\n- **[Boost.Process](https://www.boost.org/doc/libs/release/doc/html/process.html)** (`boost/process.hpp`) \u2014 Full-featured if you already use Boost. Supports async I/O via Boost.Asio.\n- **[subprocess.h](https://github.com/sheredom/subprocess.h)** \u2014 Single-header C library, very easy to integrate.\n\nFor most use cases, the `popen` approach above is sufficient and has zero dependencies.",
+          "url": "https://github.com/ChaiScript/ChaiScript/issues/609#issuecomment-4227637802",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr644",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 421,
+        "title": "Class with type_conversion from int and \"==\" operator causes switch statement to compare destroyed objects",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/421",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 644,
+        "title": "Fix #421: Switch with type_conversion compares destroyed objects",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/644",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-11T00:19:10Z",
+        "merged_at": "2026-04-11T00:36:06Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T00:36:17Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "Closes #421 and #422",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/644#issuecomment-4227474956",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr643",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 17,
+        "title": "Add const variables in ChaiScript",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/17",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 643,
+        "title": "Fix #17: Add const variables in ChaiScript",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/643",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-10T05:00:43Z",
+        "merged_at": "2026-04-11T04:12:13Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T00:11:00Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot is it possible to set the type_info to `const` and not need the `const_override` mechanism you added?",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/643#issuecomment-4227416570",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T01:40:39Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Yes, that's a better approach. We can add a `make_const()` method to `Type_Info` that flips the const bit in `m_flags`, then have `Boxed_Value::make_const()` call that instead of using the separate `m_const_override` bool.\n\nThe current `const_override` approach actually has a consistency problem: several places in the codebase check constness via `get_type_info().is_const()` directly (bypassing `Boxed_Value::is_const()`), which means they wouldn't see the override:\n\n- `bootstrap.hpp:141` \u2014 `ptr_assign` checks `lhs.get_type_info().is_const()`\n- `boxed_cast_helper.hpp:44,62,166` \u2014 cast helpers check `ob.get_type_info().is_const()`\n- `dispatchkit.hpp:1089-1098` \u2014 function dispatch matching compares `is_const()` on `Type_Info`\n\nSetting the flag directly on `Type_Info` would make constness visible everywhere consistently.\n\nThe implementation would be:\n\n1. Add to `Type_Info`: `void make_const() noexcept { m_flags |= (1 << is_const_flag); }`\n2. Change `Boxed_Value::make_const()` to: `m_data->m_type_info.make_const(); m_data->m_data_ptr = nullptr;` (nulling `m_data_ptr` mirrors the constructor behavior at `boxed_value.hpp:37` where const types get a null data ptr)\n3. Remove `m_const_override` and the copy in `Data::operator=`\n4. Revert `Boxed_Value::is_const()` back to the original `return m_data->m_type_info.is_const();`\n\nThe `m_type_info` and `m_bare_type_info` pointers would still point to the non-const C++ `std::type_info`, but that's fine \u2014 `bare_equal()` (used for type matching) only compares `m_bare_type_info`, and the dispatch system already handles const/non-const variants of the same bare type as compatible.\n\nI'll update the PR with this approach.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/643#issuecomment-4227668644",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T03:59:45Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot update the PR with the removed const_override approach mentioned above",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/643#issuecomment-4228133092",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T04:04:10Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\nd288e0ba Address review: remove const_override, set const flag directly on Type_Info\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/643#issuecomment-4228140132",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr642",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 146,
+        "title": "Add configuration to bypass the registering of 'built-in' functions.",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/146",
+        "state": "open"
+      },
+      "pr": {
+        "number": 642,
+        "title": "Fix #146: Add configuration to bypass the registering of 'built-in' functions.",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/642",
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "created_at": "2026-04-10T04:51:00Z",
+        "merged_at": null
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T00:29:08Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "review_comment",
+          "body": "@leftibot this seems confusing - the options object contains stdlib things, but the stdlib things are not honored by the ChaiScript_Basic constructor, but are honored by the ChaiScript constructor?",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/642#discussion_r3067232080",
+          "path": "unittests/compiled_tests.cpp"
+        },
+        {
+          "timestamp": "2026-04-11T01:09:26Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "You're right, this is confusing. The PR adds `No_Stdlib`, `No_IO`, `No_Prelude`, and `No_JSON` to the same `Options` enum alongside `No_Load_Modules`/`No_External_Scripts`, but the two groups are consumed at completely different layers:\n\n- **Engine-level options** (`No_Load_Modules`, `No_External_Scripts`) \u2014 handled inside `ChaiScript_Basic::build_eval_system()`, which checks `t_opts` directly\n- **Stdlib-level options** (`No_Stdlib`, `No_IO`, `No_Prelude`, `No_JSON`) \u2014 handled inside `Std_Lib::library()`, which is called *before* `ChaiScript_Basic` is constructed\n\nSo if someone constructs a `ChaiScript_Basic` and passes `No_IO` in the options vector, it silently does nothing \u2014 those options only take effect if they were passed to `Std_Lib::library()` when building the module. The `ChaiScript` convenience class papers over this by forwarding `t_opts` to both `Std_Lib::library(t_opts)` and the `ChaiScript_Basic` constructor, but that coupling is implicit and easy to miss.\n\nThe tests actually demonstrate this confusion \u2014 they all manually call `Std_Lib::library({Options::No_IO})` rather than relying on the options vector passed to the `ChaiScript_Basic` constructor (which wouldn't work).\n\nA cleaner design might be:\n1. **Separate the option types** \u2014 e.g., a `StdLibOptions` struct/enum for stdlib configuration vs. the existing `Options` for engine-level config, making it clear at the type level which options apply where\n2. **Or have `ChaiScript_Basic` also inspect the stdlib options** and apply them, so they work consistently regardless of which constructor is used\n\nEither way, having a single `Options` enum where half the values are silently ignored by one constructor is a footgun.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/642#issuecomment-4227555250",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T01:14:25Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot Update the feature to have two different enums, one for library options and one for system options. Add library options as a parameter to ChaiScript object. Add tests demonstrating both cases, through `ChaiScript_Basic` and through `ChaiScript`",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/642#issuecomment-4227564128",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T01:26:58Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\na25778c3 Address review: split Options into Options and Library_Options enums\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/642#issuecomment-4227610077",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T04:13:18Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot resolve merge conflicts",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/642#issuecomment-4228154422",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T04:17:47Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\na9fa6657 Merge develop into feature branch to resolve conflicts\nf59eff9b Fix #201: Suggestion: class Inheritance (#641)\n22092656 Merge pull request #644 from leftibot/fix/issue-421-switch-type-conversion\na329be16 Add tests for #421: switch with type_conversion lifetime bug\n78d2de0c Fix #421: Switch with type_conversion compares destroyed objects\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/642#issuecomment-4228160823",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T22:00:45Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot add documentation for this (cheatsheet maybe?)",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/642#issuecomment-4230253531",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T22:13:18Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Added cheatsheet documentation in commit `9e096a67`. The new section covers both enum types with tables and usage examples:\n\n**`Options`** (engine-level) \u2014 controls `load_module()`, `use()`, and `eval_file()` availability in scripts. Passed to the `ChaiScript`/`ChaiScript_Basic` constructor.\n\n**`Library_Options`** (stdlib-level) \u2014 controls which parts of the standard library are registered (`No_Stdlib`, `No_IO`, `No_Prelude`, `No_JSON`). Passed as the fourth parameter to `ChaiScript`, or directly to `Std_Lib::library()` when using `ChaiScript_Basic`.\n\nThe documentation includes examples for both constructor paths and a note about the `No_Prelude` vs `No_IO` distinction (disabling the prelude removes `print`/`puts` wrappers, but `print_string`/`println_string` remain available unless `No_IO` is also set).",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/642#issuecomment-4230272001",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr641",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 201,
+        "title": "Suggestion: class Inheritance",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/201",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 641,
+        "title": "Fix #201: Suggestion: class Inheritance",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/641",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-10T04:42:01Z",
+        "merged_at": "2026-04-11T01:12:06Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-10T17:39:23Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot does this PR copy all of the base class members into the derived class? Would there be a simpler way of registering an implicit conversion from derived->base so that we just naturally get the usage we would expect?",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/641#issuecomment-4225616352",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-10T17:55:47Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n15f04d4f Address review: use implicit derived-to-base matching instead of copying base class functions\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/641#issuecomment-4225703740",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-10T18:32:49Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot can you address the pros and cons of each approach?",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/641#issuecomment-4225908988",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-10T18:35:06Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Good question. Here's a comparison of the two approaches:\n\n## Approach 1: Copy base class functions into derived class (original commit `1334e02`)\n\n**How it works:** When a `class Derived : Base` is evaluated, iterates all registered functions, finds those bound to the base type, and re-registers cloned `Dynamic_Object_Function` instances bound to the derived type name. Skips any function name already defined in the derived class (overrides).\n\n**Pros:**\n- Dispatch stays simple \u2014 each function directly matches the type it's registered for, so the existing `d.get_type_name() == name` checks work unchanged\n- No per-call overhead: once the class is defined, method resolution is the same cost as any other method\n- Override semantics are straightforward \u2014 if a name exists in the derived class, the base version is simply not copied\n\n**Cons:**\n- Duplicates function registrations \u2014 every base method/attr gets a new `Dynamic_Object_Function` allocated and added to the dispatch engine, which increases memory use and slows down dispatch table scans proportionally\n- Fragile to definition order \u2014 base class must be fully defined before derived class, and any functions added to the base *after* the derived class is defined won't be visible to the derived class\n- More complex code (+~50 lines): needs `dynamic_cast` to inspect registered functions, `get_defined_method_names` helper, and the whole `copy_base_functions` method\n- Exposes `get_dynamic_object_type_name()` as a public detail on `Dynamic_Object_Function` solely for the copy logic\n\n## Approach 2: Implicit derived-to-base matching via dispatch (current, commit `15f04d4`)\n\n**How it works:** Changes the type-matching predicates (`dynamic_object_typename_match` in `dynamic_object_detail.hpp:115` and `proxy_functions.hpp:123`) to walk the inheritance chain via `Dynamic_Object::type_matches()`. Adds dispatch ordering in `dispatchkit.hpp:1063-1072` so derived-class overrides are tried before base-class methods.\n\n**Pros:**\n- Simpler (net -25 lines vs the copy approach) \u2014 no function cloning, no `dynamic_cast` inspection of registered functions\n- Methods added to a base class after derived class definition are automatically visible, since matching is checked at call time\n- No duplicated function registrations \u2014 lower memory footprint, smaller dispatch table\n- More closely mirrors how C++ virtual dispatch works conceptually (type compatibility, not copying)\n\n**Cons:**\n- Adds per-call overhead: every method call on a derived object that resolves to a base method must walk the inheritance chain in `type_matches()` \u2014 this is a `std::map` lookup per inheritance level, on every call-match check\n- The dispatch ordering logic (`dispatchkit.hpp:1063-1072`) adds overhead to *all* function sorting, not just inherited methods, since it checks `dynamic_object_type_name()` on every comparison\n- Slightly more subtle semantics \u2014 correctness depends on the dispatch ordering ensuring derived methods are tried first, which could interact unexpectedly with other dispatch priority rules\n\n## Summary\n\nThe copy approach front-loads cost at class definition time and keeps dispatch simple but creates duplication and is order-dependent. The implicit matching approach is cleaner and more flexible but adds a small cost to every method call resolution on Dynamic_Objects with inheritance. For a scripting language where class definitions happen once but method calls happen many times, the per-call overhead of approach 2 is worth considering \u2014 though the inheritance chain walk is likely negligible unless inheritance is very deep.\n\nI'd lean toward approach 2 (current) for its simplicity and correctness properties, but either way the `type_matches()` chain walk could be optimized later (e.g., caching the flattened set of ancestor types) if it shows up in profiling.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/641#issuecomment-4225920850",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T00:32:25Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "review_comment",
+          "body": "@leftibot add tests demonstrating passing a derived object to a function expecting a Base object, etc.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/641#discussion_r3067236215",
+          "path": "unittests/class_inheritance.chai"
+        },
+        {
+          "timestamp": "2026-04-11T00:40:06Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Added tests in commit 0a23aec4. The new tests cover:\n\n- **Passing derived to free functions** \u2014 a `call_do_something(obj)` and `get_x(obj)` function that call base class methods/access base attributes on derived objects\n- **Polymorphic dispatch** \u2014 `Derived2` (which overrides `do_something`) dispatches to its override when passed through the same free function\n- **Mixed containers** \u2014 `[Base(), Derived(), Derived2()]` with base method calls on each element\n- **Multi-level inheritance** \u2014 `GrandChild : Derived : Base` demonstrating that a grandchild object can call methods from Base, Derived, and its own class, and can be passed to the same free functions\n\nAll 296 tests pass.\n\nOne thing I noticed while writing these: the `is_type()` function (`dispatchkit.hpp:958`) does an **exact** type name match (`d.get_type_name() == user_typename`) rather than using `Dynamic_Object::type_matches()`. This means `is_type(derived_obj, \"Base\")` returns `false`, so guard-based dispatch like `def foo(x) : is_type(x, \"Base\")` won't match derived objects. The method dispatch (`dynamic_object_detail.hpp:117` and `proxy_functions.hpp:123`) does use `type_matches()` correctly, so calling base methods on derived objects works. Worth considering whether `is_type()` should also walk the inheritance chain.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/641#issuecomment-4227483576",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T00:52:36Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "review_comment",
+          "body": "@leftibot that was a good start, but I meant typed tests:\n\n```chaiscript\ndef call_do_something(Base obj) {\n  return obj.do_something();\n}\n```\n\nThis needs to work with either base or derived and call the appropriate derived function",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/641#discussion_r3067265447",
+          "path": "unittests/class_inheritance.chai"
+        },
+        {
+          "timestamp": "2026-04-11T01:02:23Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Updated the tests to use typed parameters as requested. New commit: 099eee59\n\nThe key changes in `unittests/class_inheritance.chai`:\n\n```chaiscript\n// Typed function - parameter declared as Base\ndef call_do_something(Base obj) {\n  return obj.do_something()\n}\n\nassert_equal(20, call_do_something(Base()))     // Base works\nassert_equal(20, call_do_something(Derived()))  // Derived accepted, calls base method\nassert_equal(500, call_do_something(Derived2())) // Derived2 accepted, calls its override\n\n// Typed attribute accessor\ndef get_x(Base obj) {\n  return obj.x\n}\n\n// Multi-level: GrandChild passed to Base-typed function\nassert_equal(2, call_do_something(gc))\nassert_equal(1, get_x(gc))\n\n// Mid-level typed function\ndef call_do_other(Derived obj) {\n  return obj.do_other()\n}\nassert_equal(6, call_do_other(GrandChild()))\n```\n\nThis all works correctly because `Param_Types::match()` in `proxy_functions.hpp:123` already uses `Dynamic_Object::type_matches()` to walk the inheritance chain, so a `Derived` object matches a `Base`-typed parameter. Polymorphic dispatch also works \u2014 `Derived2`'s override of `do_something()` is called even when passed through `call_do_something(Base obj)`.\n\nAll 296 tests pass.",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/641#issuecomment-4227540610",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr640",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 256,
+        "title": "ChaiScript::get_locals() does not show functions",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/256",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 640,
+        "title": "Fix #256: ChaiScript::get_locals() does not show functions",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/640",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-10T04:21:27Z",
+        "merged_at": "2026-04-11T13:57:09Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-11T00:02:45Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "review_comment",
+          "body": "@leftibot there's no test for `get_scripting_objects()`",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/640#discussion_r3067193625",
+          "path": "unittests/compiled_tests.cpp"
+        },
+        {
+          "timestamp": "2026-04-11T04:09:22Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot add tests for `get_scripting_objects()`",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/640#issuecomment-4228147932",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-11T04:25:22Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n4786a6ce Address review: add tests for get_scripting_objects()\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/640#issuecomment-4228173684",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr639",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 591,
+        "title": "Classes?",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/591",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 639,
+        "title": "[WIP] Issue #591 \u2014 Classes?",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/639",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-10T04:15:53Z",
+        "merged_at": "2026-04-10T23:57:29Z"
+      },
+      "conversation": [
+        {
+          "timestamp": "2026-04-10T04:18:08Z",
+          "author": "lefticus",
+          "author_avatar": "https://avatars.githubusercontent.com/u/234279?v=4",
+          "type": "issue_comment",
+          "body": "@leftibot don't reference issue numbers in the code or documentation",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/639#issuecomment-4220375696",
+          "path": null
+        },
+        {
+          "timestamp": "2026-04-10T17:32:05Z",
+          "author": "leftibot",
+          "author_avatar": "https://avatars.githubusercontent.com/u/274938224?v=4",
+          "type": "issue_comment",
+          "body": "Addressed review feedback from @lefticus. New commits:\n```\n\n```",
+          "url": "https://github.com/ChaiScript/ChaiScript/pull/639#issuecomment-4225569306",
+          "path": null
+        }
+      ]
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr638",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 284,
+        "title": "Way to disable instring_eval",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/284",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 638,
+        "title": "[WIP] Issue #284 \u2014 Way to disable instring_eval",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/638",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-10T04:09:47Z",
+        "merged_at": "2026-04-11T04:09:50Z"
+      },
+      "conversation": []
+    },
+    {
+      "id": "ChaiScript/ChaiScript#pr637",
+      "type": "issue-fix",
+      "owner": "ChaiScript",
+      "repo": "ChaiScript",
+      "issue": {
+        "number": 12,
+        "title": "Document reflection",
+        "url": "https://github.com/ChaiScript/ChaiScript/issues/12",
+        "state": "closed"
+      },
+      "pr": {
+        "number": 637,
+        "title": "[WIP] Issue #12 \u2014 Document reflection",
+        "url": "https://github.com/ChaiScript/ChaiScript/pull/637",
+        "state": "merged",
+        "merged": true,
+        "draft": false,
+        "created_at": "2026-04-10T03:44:01Z",
+        "merged_at": "2026-04-10T23:41:13Z"
+      },
+      "conversation": []
+    }
+  ]
+}

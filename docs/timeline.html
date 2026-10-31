@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>leftibot timeline</title>
+<style>
+:root {
+  --bg: #0d1117; --surface: #161b22; --border: #30363d;
+  --text: #e6edf3; --text-muted: #8b949e; --text-dim: #6e7681;
+  --accent: #58a6ff; --green: #3fb950; --yellow: #d29922;
+  --red: #f85149; --purple: #bc8cff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
+
+header { margin-bottom: 32px; }
+header h1 { font-size: 28px; font-weight: 600; }
+header h1 span { color: var(--text-muted); font-weight: 400; }
+header p { color: var(--text-muted); margin-top: 4px; }
+
+.stats { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+.stat { text-align: center; }
+.stat-value { font-size: 24px; font-weight: 600; }
+.stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; align-items: center; }
+.filter-btn { padding: 4px 12px; border-radius: 16px; border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font-size: 13px; transition: all 0.15s; }
+.filter-btn:hover { border-color: var(--text-muted); }
+.filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.filter-search { flex: 1; min-width: 200px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 14px; }
+.filter-search::placeholder { color: var(--text-dim); }
+
+/* Entry wrapper */
+.entry { margin-bottom: 32px; }
+
+/* Context line: repo, issue link, PR badge, timestamp */
+.entry-context { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.entry-context a { color: var(--text-muted); }
+
+.badge { display: inline-block; padding: 1px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+.badge-merged { background: rgba(63,185,80,0.15); color: var(--green); }
+.badge-open { background: rgba(88,166,255,0.15); color: var(--accent); }
+.badge-draft { background: rgba(210,153,34,0.15); color: var(--yellow); }
+.badge-closed { background: rgba(248,81,73,0.15); color: var(--red); }
+.badge-comment { background: rgba(188,140,255,0.15); color: var(--purple); }
+
+/* Query-response blocks */
+.qr-block { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+
+.query, .response { padding: 14px 16px; }
+.query { border-bottom: 1px solid var(--border); }
+.response { background: rgba(255,255,255,0.01); }
+
+.qr-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+.qr-label a { font-size: 11px; }
+.qr-label-query { color: var(--yellow); }
+.qr-label-response { color: var(--green); }
+.qr-label-leftibot { color: var(--accent); }
+
+.qr-body { font-size: 14px; color: var(--text); overflow-wrap: break-word; }
+.qr-body code { background: rgba(255,255,255,0.08); padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+.qr-body pre { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px; overflow-x: auto; margin: 8px 0; }
+.qr-body pre code { background: none; padding: 0; }
+.qr-body p { margin: 4px 0; }
+.qr-body blockquote { border-left: 3px solid var(--border); padding-left: 12px; color: var(--text-muted); margin: 4px 0; }
+
+.file-path { font-size: 12px; color: var(--yellow); font-family: monospace; margin-bottom: 2px; }
+
+/* Additional conversation (review cycles etc) */
+.more-toggle { padding: 8px 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-dim); cursor: pointer; }
+.more-toggle:hover { color: var(--text-muted); }
+.more-messages { display: none; }
+.more-messages.open { display: block; }
+.extra-msg { padding: 12px 16px; border-top: 1px solid var(--border); }
+.extra-msg .qr-label { font-size: 11px; margin-bottom: 2px; }
+
+.no-results { text-align: center; padding: 48px; color: var(--text-dim); }
+footer { text-align: center; padding: 32px 0; color: var(--text-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>leftibot <span>timeline</span></h1>
+    <p>Autonomous issue fixer for <a href="https://github.com/lefticus">@lefticus</a> &mdash; <a href="https://github.com/leftibot">github.com/leftibot</a></p>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="merged">Merged</button>
+    <button class="filter-btn" data-filter="open">Open</button>
+    <button class="filter-btn" data-filter="draft">Draft</button>
+    <button class="filter-btn" data-filter="closed">Closed</button>
+    <button class="filter-btn" data-filter="comment">Comments</button>
+    <input type="text" class="filter-search" id="search" placeholder="Search issues, repos...">
+  </div>
+
+  <div id="timeline"></div>
+
+  <footer id="footer"></footer>
+</div>
+
+<script>
+let DATA = null;
+let activeFilter = "all";
+
+async function load() {
+  const resp = await fetch("timeline.json");
+  DATA = await resp.json();
+  // Sort chronologically — oldest first
+  DATA.entries.sort((a, b) => {
+    const ta = entryTime(a);
+    const tb = entryTime(b);
+    return ta.localeCompare(tb);
+  });
+  renderStats();
+  renderTimeline();
+  document.getElementById("footer").textContent =
+    "Generated " + timeAgo(DATA.generated_at);
+}
+
+function entryTime(e) {
+  if (e.pr && e.pr.created_at) return e.pr.created_at;
+  if (e.conversation.length) return e.conversation[0].timestamp;
+  return "";
+}
+
+function renderStats() {
+  const e = DATA.entries;
+  const fixes = e.filter(x => x.type === "issue-fix").length;
+  const merged = e.filter(x => x.pr && x.pr.merged).length;
+  const openPRs = e.filter(x => x.pr && !x.pr.merged && x.pr.state === "open").length;
+  const drafts = e.filter(x => x.pr && x.pr.draft).length;
+  const comments = e.filter(x => x.type === "comment-reply").length;
+  const repos = new Set(e.map(x => x.owner + "/" + x.repo)).size;
+
+  document.getElementById("stats").innerHTML = [
+    stat(fixes, "Issues Fixed"),
+    stat(merged, "PRs Merged"),
+    stat(openPRs, "PRs Open"),
+    stat(drafts, "Drafts"),
+    stat(comments, "Comments"),
+    stat(repos, "Repos"),
+  ].join("");
+}
+
+function stat(value, label) {
+  return `<div class="stat"><div class="stat-value">${value}</div><div class="stat-label">${label}</div></div>`;
+}
+
+function renderTimeline() {
+  const search = document.getElementById("search").value.toLowerCase();
+  const filtered = DATA.entries.filter(e => {
+    if (activeFilter === "merged") return e.pr && e.pr.merged;
+    if (activeFilter === "open") return e.pr && !e.pr.merged && e.pr.state === "open";
+    if (activeFilter === "draft") return e.pr && e.pr.draft;
+    if (activeFilter === "closed") return e.pr && !e.pr.merged && e.pr.state === "closed";
+    if (activeFilter === "comment") return e.type === "comment-reply";
+    return true;
+  }).filter(e => {
+    if (!search) return true;
+    const haystack = [
+      e.issue?.title, e.pr?.title, e.owner + "/" + e.repo,
+      ...e.conversation.map(m => m.body)
+    ].join(" ").toLowerCase();
+    return haystack.includes(search);
+  });
+
+  if (filtered.length === 0) {
+    document.getElementById("timeline").innerHTML = '<div class="no-results">No matching entries</div>';
+    return;
+  }
+
+  document.getElementById("timeline").innerHTML = filtered.map(entryHTML).join("");
+
+  // Attach toggle listeners for "more" sections
+  document.querySelectorAll(".more-toggle").forEach(t => {
+    t.addEventListener("click", () => {
+      const msgs = t.nextElementSibling;
+      msgs.classList.toggle("open");
+      const count = msgs.querySelectorAll(".extra-msg").length;
+      t.textContent = msgs.classList.contains("open")
+        ? "Hide additional messages"
+        : `Show ${count} more message${count !== 1 ? "s" : ""}...`;
+    });
+  });
+}
+
+function entryHTML(e) {
+  const repo = e.owner + "/" + e.repo;
+  const ts = entryTime(e);
+
+  // Context line
+  let contextParts = [`<span>${esc(repo)}</span>`];
+  if (e.issue) {
+    contextParts.push(`<a href="${esc(e.issue.url)}">#${e.issue.number}: ${esc(e.issue.title)}</a>`);
+  }
+  if (e.pr) {
+    const badgeClass = e.pr.merged ? "merged" : (e.pr.draft ? "draft" : (e.pr.state === "open" ? "open" : "closed"));
+    contextParts.push(`<a href="${esc(e.pr.url)}">PR #${e.pr.number}</a>`);
+    contextParts.push(`<span class="badge badge-${badgeClass}">${badgeClass}</span>`);
+  }
+  if (e.type === "comment-reply") {
+    contextParts.push('<span class="badge badge-comment">comment</span>');
+  }
+  if (ts) {
+    contextParts.push(`<span title="${esc(ts)}">${timeAgo(ts)}</span>`);
+  }
+
+  // Find the trigger (first message from lefticus mentioning @leftibot, or first lefticus message)
+  // and the response (first leftibot message after the trigger, or the PR itself)
+  const trigger = findTrigger(e);
+  const responses = findResponses(e, trigger);
+  const extras = findExtras(e, trigger, responses);
+
+  let qrHTML = '<div class="qr-block">';
+
+  // Query
+  if (trigger) {
+    qrHTML += `<div class="query">
+      <div class="qr-label qr-label-query">
+        @${esc(trigger.author)}
+        &middot; <a href="${esc(trigger.url)}">${timeAgo(trigger.timestamp)}</a>
+        ${trigger.path ? `&middot; <span class="file-path">${esc(trigger.path)}</span>` : ""}
+      </div>
+      <div class="qr-body">${renderMarkdown(trigger.body)}</div>
+    </div>`;
+  } else if (e.issue) {
+    // No explicit trigger in conversation — show the issue itself as context
+    qrHTML += `<div class="query">
+      <div class="qr-label qr-label-query">issue opened</div>
+      <div class="qr-body">${renderMarkdown(e.issue.title)}</div>
+    </div>`;
+  }
+
+  // Response(s)
+  if (responses.length > 0) {
+    for (const r of responses) {
+      qrHTML += `<div class="response">
+        <div class="qr-label qr-label-response">
+          @leftibot
+          ${r.url ? `&middot; <a href="${esc(r.url)}">${timeAgo(r.timestamp)}</a>` : ""}
+          ${r.path ? `&middot; <span class="file-path">${esc(r.path)}</span>` : ""}
+        </div>
+        <div class="qr-body">${renderMarkdown(r.body)}</div>
+      </div>`;
+    }
+  } else if (e.pr) {
+    // No leftibot comment — the response was the PR itself
+    const prLabel = e.pr.merged ? "opened PR (merged)" : (e.pr.draft ? "opened draft PR" : "opened PR");
+    qrHTML += `<div class="response">
+      <div class="qr-label qr-label-response">@leftibot &middot; ${prLabel}</div>
+      <div class="qr-body"><a href="${esc(e.pr.url)}">${esc(e.pr.title)}</a></div>
+    </div>`;
+  }
+
+  // Extra messages (review cycles, follow-ups)
+  if (extras.length > 0) {
+    qrHTML += `<div class="more-toggle">Show ${extras.length} more message${extras.length !== 1 ? "s" : ""}...</div>`;
+    qrHTML += '<div class="more-messages">';
+    for (const m of extras) {
+      const labelClass = m.author === "leftibot" ? "qr-label-response" : "qr-label-query";
+      qrHTML += `<div class="extra-msg">
+        <div class="qr-label ${labelClass}">
+          @${esc(m.author)}
+          ${m.type === "review_comment" || m.type === "review" ? "&middot; review" : ""}
+          &middot; <a href="${esc(m.url)}">${timeAgo(m.timestamp)}</a>
+          ${m.path ? `&middot; <span class="file-path">${esc(m.path)}</span>` : ""}
+        </div>
+        <div class="qr-body">${renderMarkdown(m.body)}</div>
+      </div>`;
+    }
+    qrHTML += '</div>';
+  }
+
+  qrHTML += '</div>';
+
+  return `<div class="entry">
+    <div class="entry-context">${contextParts.join(" &middot; ")}</div>
+    ${qrHTML}
+  </div>`;
+}
+
+function findTrigger(e) {
+  // First lefticus message that mentions @leftibot
+  const mentionTrigger = e.conversation.find(m =>
+    m.author === "lefticus" && m.body && m.body.toLowerCase().includes("@leftibot")
+  );
+  if (mentionTrigger) return mentionTrigger;
+  // Fallback: first lefticus message
+  return e.conversation.find(m => m.author === "lefticus") || null;
+}
+
+function findResponses(e, trigger) {
+  if (!trigger) {
+    // No trigger — return all leftibot messages
+    return e.conversation.filter(m => m.author === "leftibot").slice(0, 1);
+  }
+  // First leftibot message(s) after the trigger
+  const afterTrigger = e.conversation.filter(m =>
+    m.author === "leftibot" && m.timestamp >= trigger.timestamp
+  );
+  return afterTrigger.slice(0, 1);
+}
+
+function findExtras(e, trigger, responses) {
+  // Everything not the trigger or first response
+  const used = new Set();
+  if (trigger) used.add(trigger);
+  for (const r of responses) used.add(r);
+  return e.conversation.filter(m => !used.has(m));
+}
+
+function renderMarkdown(text) {
+  if (!text) return "";
+  let html = esc(text);
+  // Code blocks
+  html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) =>
+    `<pre><code>${code}</code></pre>`);
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
+  // Bold
+  html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  // Links
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+  // Blockquotes
+  html = html.replace(/^&gt; (.+)$/gm, "<blockquote>$1</blockquote>");
+  // Line breaks
+  html = html.replace(/\n\n/g, "</p><p>");
+  html = html.replace(/\n/g, "<br>");
+  return "<p>" + html + "</p>";
+}
+
+function timeAgo(iso) {
+  const diff = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (diff < 0) return "just now";
+  if (diff < 60) return "just now";
+  if (diff < 3600) return Math.floor(diff / 60) + "m ago";
+  if (diff < 86400) return Math.floor(diff / 3600) + "h ago";
+  if (diff < 604800) return Math.floor(diff / 86400) + "d ago";
+  return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+
+function esc(s) {
+  if (!s) return "";
+  const d = document.createElement("div");
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// Filter buttons
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = btn.dataset.filter;
+    renderTimeline();
+  });
+});
+
+document.getElementById("search").addEventListener("input", renderTimeline);
+
+load();
+</script>
+</body>
+</html>
