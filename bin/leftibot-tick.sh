@@ -911,6 +911,25 @@ process_new_issue() {
 # ============================================================================
 # Flow 2: PR review feedback → address → push
 # ============================================================================
+
+# Clone the PR's head repo as origin (where the PR branch lives), add the base
+# repo as upstream, and check out the PR branch.
+setup_pr_workspace() {
+  local workdir="$1" clone_url="$2" upstream_url="$3" head_branch="$4"
+  log "cloning $clone_url into $workdir"
+  git clone --quiet "$clone_url" "$workdir" || die "clone failed"
+  ( cd "$workdir"
+    git remote add upstream "$upstream_url" 2>/dev/null || true
+    git fetch --quiet upstream
+    # Name the remote explicitly: for a same-repo PR, origin and upstream are the
+    # same repo, so a bare `git checkout <branch>` matches two remote branches and fails.
+    git checkout -B "$head_branch" --track "origin/$head_branch" \
+      || die "could not check out $head_branch"
+    git config user.email "leftibot@users.noreply.github.com"
+    git config user.name "leftibot"
+  ) || die "workspace setup failed"
+}
+
 process_pr_review() {
   local cand="$1"
   local owner repo pr_number title pr_url thread_id head_branch head_repo
@@ -933,17 +952,8 @@ process_pr_review() {
   rm -rf "$workdir"
   mkdir -p "$workdir"
 
-  # Clone from the fork (where the PR branch lives)
-  local clone_url="git@github.com:${head_repo}.git"
-  log "cloning $clone_url into $workdir"
-  git clone --quiet "$clone_url" "$workdir" || die "clone failed"
-  ( cd "$workdir"
-    git remote add upstream "https://github.com/$owner/$repo.git" 2>/dev/null || true
-    git fetch --quiet upstream
-    git checkout "$head_branch" || die "could not check out $head_branch"
-    git config user.email "leftibot@users.noreply.github.com"
-    git config user.name "leftibot"
-  ) || die "workspace setup failed"
+  setup_pr_workspace "$workdir" "git@github.com:${head_repo}.git" \
+    "https://github.com/$owner/$repo.git" "$head_branch"
 
   # Gather all review feedback
   local issue_comments review_comments reviews pr_body_text
