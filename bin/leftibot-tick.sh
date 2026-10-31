@@ -721,6 +721,43 @@ _Triggered by @lefticus._"
   fi
 }
 
+# ----------------------------------------------------------------------------
+# Status comment: posted when work begins, edited in place when work ends, so
+# the issue/PR shows that leftibot has picked the task up.
+# ----------------------------------------------------------------------------
+STATUS_COMMENT_OWNER=""
+STATUS_COMMENT_REPO=""
+STATUS_COMMENT_ID=""
+
+begin_status_comment() {
+  local owner="$1" repo="$2" number="$3" body="$4"
+  if (( DRY_RUN )); then
+    vlog "[dry-run] would post status comment on $owner/$repo#$number: $body"
+    return 0
+  fi
+  local comment_id
+  comment_id=$(gh api -X POST "repos/$owner/$repo/issues/$number/comments" \
+    -f "body=$body" --jq .id 2>/dev/null) || { log "WARNING: failed to post status comment"; return 0; }
+  STATUS_COMMENT_OWNER="$owner"
+  STATUS_COMMENT_REPO="$repo"
+  STATUS_COMMENT_ID="$comment_id"
+  vlog "posted status comment $STATUS_COMMENT_ID on $owner/$repo#$number"
+}
+
+finish_status_comment() {
+  local body="$1"
+  [[ -n "$STATUS_COMMENT_ID" ]] || return 0
+  local comment_id="$STATUS_COMMENT_ID"
+  STATUS_COMMENT_ID=""
+  gh api -X PATCH "repos/$STATUS_COMMENT_OWNER/$STATUS_COMMENT_REPO/issues/comments/$comment_id" \
+    -f "body=$body" >/dev/null 2>&1 || log "WARNING: failed to update status comment $comment_id"
+}
+
+on_exit_finalize_status_comment() {
+  finish_status_comment "⚠️ $BOT_USER stopped unexpectedly while working on this. Leaving for human review."
+}
+trap on_exit_finalize_status_comment EXIT
+
 post_giveup_comment() {
   local owner="$1" repo="$2" number="$3"
   if (( DRY_RUN )); then
@@ -748,6 +785,8 @@ process_new_issue() {
   log "  url: $issue_url"
 
   mark_seen "$issue_url" "in-progress"
+  begin_status_comment "$owner" "$repo" "$number" \
+    "👀 $BOT_USER has started working on this. I'll update this comment when I'm done."
 
   local slug branch label
   slug=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr -c 'a-z0-9' '-' | sed 's/--*/-/g; s/^-//; s/-$//' | cut -c1-40)
@@ -802,14 +841,17 @@ process_new_issue() {
       pr_url=$(open_pr "$workdir" "$owner" "$repo" "$number" "$title" "$branch" "$default_branch" 0)
       log "opened PR: $pr_url"
       mark_seen "$issue_url" "done" "$pr_url"
+      finish_status_comment "✅ $BOT_USER finished working on this — opened $pr_url"
       ;;
     no-test|build-fail|test-fail)
       pr_url=$(open_pr "$workdir" "$owner" "$repo" "$number" "$title" "$branch" "$default_branch" 1 "$verify_status")
       log "opened DRAFT PR: $pr_url"
       mark_seen "$issue_url" "draft-pr-opened" "$pr_url"
+      finish_status_comment "⚠️ $BOT_USER finished working on this — opened draft $pr_url (verification: $verify_status)"
       ;;
     no-commit|*)
       log "nothing committed — not opening PR"
+      finish_status_comment "❌ $BOT_USER stopped working on this without producing a change."
       post_giveup_comment "$owner" "$repo" "$number"
       mark_seen "$issue_url" "attempted-failed"
       ;;
@@ -837,6 +879,8 @@ process_pr_review() {
   log "FLOW: pr-review — $owner/$repo#$pr_number — $title"
   log "  url: $pr_url"
   log "  branch: $head_branch (on $head_repo)"
+  begin_status_comment "$owner" "$repo" "$pr_number" \
+    "👀 $BOT_USER has started addressing the review feedback. I'll update this comment when I'm done."
 
   local label="${owner}-${repo}-pr-${pr_number}"
   local workdir="$WORK_DIR/$label"
@@ -931,6 +975,12 @@ $commit_summary
     fi
   fi
 
+  if (( has_new_commits )); then
+    finish_status_comment "✅ $BOT_USER finished addressing the review feedback."
+  else
+    finish_status_comment "❌ $BOT_USER stopped addressing the review feedback without producing a change."
+  fi
+
   mark_notification_read "$thread_id"
   cleanup_workdir "$workdir"
   log "tick complete — flow=pr-review has_new_commits=$has_new_commits"
@@ -951,6 +1001,8 @@ process_comment_request() {
   context_type=$(echo "$cand" | jq -r .context_type)
   log "FLOW: comment-only — $owner/$repo#$number ($context_type) — $title"
   log "  url: $url"
+  begin_status_comment "$owner" "$repo" "$number" \
+    "👀 $BOT_USER is looking into this. I'll reply below when I'm done."
 
   local label="${owner}-${repo}-comment-${number}"
   local workdir="$WORK_DIR/$label"
@@ -1059,6 +1111,7 @@ process_comment_request() {
       || log "WARNING: failed to post PR comment"
   fi
   log "posted comment on $owner/$repo#$number"
+  finish_status_comment "✅ $BOT_USER finished looking into this — see reply below."
 
   mark_notification_read "$thread_id"
   cleanup_workdir "$workdir"
@@ -1100,4 +1153,6 @@ main() {
   exit 10  # 10 = work was done
 }
 
-main "$@"
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  main "$@"
+fi
